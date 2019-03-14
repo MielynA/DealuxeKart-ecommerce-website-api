@@ -1,0 +1,40 @@
+{
+  "name": "dealuxekart--server",
+  "version": "1.0.0",
+  "description": "DealuxeKart server",
+  "main": "index.js",
+  "scripts": {
+    "test": "$(npm bin)/jest --coverage",
+    "nodemon": "./node_modules/.bin/nodemon",
+    "write-coveralls": "rm -rf .coveralls.yml && echo \"repo_token:$COVERAGE_TOKEN\" >> .coveralls.yml"
+  },
+  "author": "me",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "pg-promise": "^8.6.3"
+  },
+  "devDependencies": {
+    "coveralls": "^3.0.3",
+    "jest": "^24.3.1"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "coverageReporters": [
+      "json",
+      "lcov",
+      "text",
+      "clover",
+      "html"
+    ],
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!**/node_modules/**",
+      "!**/vendor/**",
+      "!**/__fixtures__/**",
+      "!**/coverage/**",
+      "!index.js"
+    ]
+  }
+}
