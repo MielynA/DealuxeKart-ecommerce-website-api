@@ -4,8 +4,8 @@
   "description": "DealuxeKart server",
   "main": "index.js",
   "scripts": {
-    "test": "$(npm bin)/jest --coverage",
-    "nodemon": "./node_modules/.bin/nodemon",
+    "test": "$(npm bin)/jest --coverage && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
+    "nodemon": "nodemon",
     "write-coveralls": "rm -rf .coveralls.yml && echo \"repo_token:$COVERAGE_TOKEN\" >> .coveralls.yml"
   },
   "author": "me",
@@ -13,7 +13,8 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
-    "pg-promise": "^8.6.3"
+    "pg-promise": "^8.6.3",
+    "supertest": "^4.0.0"
   },
   "devDependencies": {
     "coveralls": "^3.0.3",
@@ -36,5 +37,16 @@
       "!**/coverage/**",
       "!index.js"
     ]
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MielynA/DealuxeKart-ecommerce-website-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MielynA/DealuxeKart-ecommerce-website-api/issues"
+  },
+  "homepage": "https://github.com/MielynA/DealuxeKart-ecommerce-website-api#readme"
 }
