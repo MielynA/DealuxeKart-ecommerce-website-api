@@ -6,7 +6,7 @@ const customerService = require ('../services/customer_services');
 //--- CREATE CUSTOMERS 
 app.post('/', (req,res)=>{
     const { username, userPassword, email, billingAdd, city, state, creditCard } = req.body; 
-    customerService.custCreate(username, userPassword, email, billingAdd, city, state, creditCard).then(()=>{
+    customerService.post(username, userPassword, email, billingAdd, city, state, creditCard).then(()=>{
             res.json({msg: 'new customer is created!'})
         })
         .catch(err=>{
@@ -20,8 +20,9 @@ app.get('/:cust_id', (req, res)=>{
     if(!cust_id){
         res.json({msg : `customer ${cust_id} does not exist`})
     }
-    customerService.custRead(cust_id).then((newCust)=>{
+    customerService.get(cust_id).then((newCust)=>{
         res.json({msg: newCust})
+        
     })
     .catch(err=>{
         res.status(404).json({error: err.toString('utf-8')})
@@ -31,15 +32,27 @@ app.get('/:cust_id', (req, res)=>{
 //--- EDIT CUSTOMER INFO 
 app.put('/:cust_id', (req,res)=>{
     const {cust_id} = req.params; 
-    const {username, userPassword, email, billingAdd, city, state, creditCard} = req.body; 
-    customerService.custRead(cust_id).then((data)=>{
-        customerService.custUpdate(username, userPassword, email, billingAdd, city, state, creditCard).then(()=>{
-            res.json({msg: 'udpated!', data})
+    const {username,userPassword,email,billingAdd,city,state,creditCard} = req.body; 
+        customerService.put(cust_id, username, userPassword, email, billingAdd, city, state, creditCard).then((data)=>{
+            res.json({msg: `customer ${cust_id} ${username} is udpated!`})
         })
         .catch(err=>{
             res.status(404).json({error: err.toString('utf-8')})
         })
-    })
+
 })
 
+//--- DELETE CUSTOMER INFO 
+app.delete('/:cust_id', (req,res)=>{
+    const{cust_id} = req.params; 
+    const {username,userPassword,email,billingAdd,city,state,creditCard} = req.body;
+  
+        customerService.delete(cust_id,username,userPassword,email,billingAdd,city,state,creditCard).then(()=>{
+            res.json({msg: `customer ${cust_id} ${username} has been deleted`})
+        })
+
+    .catch(err=>{
+        res.status(404).json({error: err.toString('utf-8')})
+    })
+})
 module.exports = {customerRoutes: app, } 
