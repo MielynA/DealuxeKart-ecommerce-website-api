@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 
 //--- PATH ROUTER MODULES 
 const {customerRoutes} = require('./backend/routes/customer');
+const {supplierRoutes} = require('./backend/routes/supplier');
 
 
 //--- MIDDLEWARE 
@@ -16,7 +17,7 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
 app.use('/', customerRoutes);
-app.use('/cust_id', customerRoutes)
+app.use('/', supplierRoutes);
 
 
 
