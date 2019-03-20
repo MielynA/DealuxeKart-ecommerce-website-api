@@ -17,11 +17,11 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
 app.use('/', customerRoutes);
-app.use('/', supplierRoutes);
+app.use('/supplier', supplierRoutes);
 
 
 
 
 //--- RUNNING ENVI SERVER PORT 
 app.listen(process.env.PORT || 3002);
-console.log('port 3002 is listening');
+console.log('port:', process.env.PORT || 3002 ,'is listening..');

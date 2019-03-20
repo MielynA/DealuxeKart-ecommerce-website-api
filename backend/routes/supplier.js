@@ -3,10 +3,10 @@ const supplierService = require ('../services/supplier_services');
 
 
 
-//--- CREATE CUSTOMERS 
+//--- CREATE SUPPLIERS 
 app.post('/', (req,res)=>{
-    const { supplierId, customerId, fName, lName, supplierPassword, shopName, phone, email, address, city, state, country } = req.body; 
-    supplierService.post(supplierId, customerId, fName, lName, supplierPassword, shopName, phone, email, address, city, state, country).then(()=>{
+    const {customerId, username, supplierPassword, shopName, phone, email, address, country } = req.body; 
+    supplierService.post(customerId, username, supplierPassword, shopName, phone, email, address,country).then(()=>{
             res.json({msg: 'created!'})
         })
         .catch(err=>{
@@ -14,13 +14,13 @@ app.post('/', (req,res)=>{
         })
 })
 
-//--- READ/GET CUSTOMER INFO
-app.get('/:cust_id', (req, res)=>{
-    const {cust_id} = req.params; 
-    if(!cust_id){
-        res.json({msg : `customer ${cust_id} does not exist`})
+//--- READ/GET SUPPLIER INFO
+app.get('/:supplier_id', (req, res)=>{
+    const {supplier_id} = req.params; 
+    if(!supplier_id){
+        res.json({msg : `SUPPLIER ${supplier_id} does not exist`})
     }
-    supplierService.get(cust_id).then((newCust)=>{
+    supplierService.get(supplier_id).then((newCust)=>{
         res.json({msg: newCust})
         
     })
@@ -29,12 +29,12 @@ app.get('/:cust_id', (req, res)=>{
     })
 })
 
-//--- EDIT CUSTOMER INFO 
+//--- EDIT SUPPLIER INFO 
 app.put('/:cust_id', (req,res)=>{
-    const {cust_id} = req.params; 
-    const {username,userPassword,email,billingAdd,city,state,creditCard} = req.body; 
-        supplierService.put(cust_id, username, userPassword, email, billingAdd, city, state, creditCard).then((data)=>{
-            res.json({msg: `customer ${cust_id} ${username} is udpated!`})
+    const {supplier_id} = req.params; 
+    const {customerId,username, supplierPassword, shopName, phone, email, address,country} = req.body; 
+        supplierService.put(supplier_id, customerId,username, supplierPassword, shopName, phone, email, address,country).then((data)=>{
+            res.json({msg: `SUPPLIER ${supplier_id} is udpated!`})
         })
         .catch(err=>{
             res.status(404).json({error: err.toString('utf-8')})
@@ -42,16 +42,16 @@ app.put('/:cust_id', (req,res)=>{
 
 })
 
-//--- DELETE CUSTOMER INFO 
-app.delete('/:cust_id', (req,res)=>{
-    const{cust_id} = req.params; 
-    const {username,userPassword,email,billingAdd,city,state,creditCard} = req.body;
+//--- DELETE SUPPLIER INFO 
+app.delete('/:supplier_id', (req,res)=>{
+    const{supplier_id} = req.params; 
+    const {customerId,username, supplierPassword, shopName, phone, email, address,country} = req.body;
   
-        supplierService.delete(cust_id,username,userPassword,email,billingAdd,city,state,creditCard).then(()=>{
-            res.json({msg: `customer ${cust_id} ${username} has been deleted`})
+        supplierService.delete(supplier_id, customerId,username, supplierPassword, shopName, phone, email, address,country).then(()=>{
+            res.json({msg: `SUPPLIER ${supplier_id} has been deleted`})
         })
 
-    .catch(err=>{
+    .catch(err=>{   
         res.status(404).json({error: err.toString('utf-8')})
     })
 })

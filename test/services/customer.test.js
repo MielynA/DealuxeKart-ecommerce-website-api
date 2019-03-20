@@ -13,7 +13,7 @@ pgp.mockImplementation(() => {
 
 //--- TEST FOR POST CUSTOMER SERVICE 
 test("objectWithoutInfo", ()=>{
-const customerService = require ('../../backend/services/customer_services');
+    const customerService = require ('../../backend/services/customer_services');
 customerService.post("Mie", 123, "mie@email.com", "Queens", "NYC", "NYC", 59679).then(data => {
         expect(data).toBe(undefined)
         //expect(data).toEqual({userName : "Mie", userPassword : 10383, email : "lara@email.com", billingAdd : "Brooklyn", city: "NYC", state: "NYC", creditCard: 01010 })
