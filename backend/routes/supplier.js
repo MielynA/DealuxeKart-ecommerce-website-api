@@ -5,8 +5,8 @@ const supplierService = require ('../services/supplier_services');
 
 //--- CREATE SUPPLIERS 
 app.post('/', (req,res)=>{
-    const {customerId, username, supplierPassword, shopName, phone, email, address, country } = req.body; 
-    supplierService.post(customerId, username, supplierPassword, shopName, phone, email, address,country).then(()=>{
+    const {customerId, username, supplierPassword, shopName, phone, email, address, country, createdAt, updatedAt, imgurl } = req.body; 
+    supplierService.post(customerId, username, supplierPassword, shopName, phone, email, address,country, createdAt, updatedAt,imgurl).then((data)=>{
             res.json({msg: 'created!'})
         })
         .catch(err=>{
@@ -32,8 +32,8 @@ app.get('/:supplier_id', (req, res)=>{
 //--- EDIT SUPPLIER INFO 
 app.put('/:cust_id', (req,res)=>{
     const {supplier_id} = req.params; 
-    const {customerId,username, supplierPassword, shopName, phone, email, address,country} = req.body; 
-        supplierService.put(supplier_id, customerId,username, supplierPassword, shopName, phone, email, address,country).then((data)=>{
+    const {customerId,username, supplierPassword, shopName, phone, email, address,country, createdAt, updatedAt,imgurl} = req.body; 
+        supplierService.put(supplier_id, customerId,username, supplierPassword, shopName, phone, email, address,country, createdAt, updatedAt, imgurl).then((data)=>{
             res.json({msg: `SUPPLIER ${supplier_id} is udpated!`})
         })
         .catch(err=>{
@@ -45,9 +45,9 @@ app.put('/:cust_id', (req,res)=>{
 //--- DELETE SUPPLIER INFO 
 app.delete('/:supplier_id', (req,res)=>{
     const{supplier_id} = req.params; 
-    const {customerId,username, supplierPassword, shopName, phone, email, address,country} = req.body;
+    const {customerId,username, supplierPassword, shopName, phone, email, address,country, createdAt, updatedAt,imgurl} = req.body;
   
-        supplierService.delete(supplier_id, customerId,username, supplierPassword, shopName, phone, email, address,country).then(()=>{
+        supplierService.delete(supplier_id, customerId,username, supplierPassword, shopName, phone, email, address,country, createdAt, updatedAt,imgurl).then(()=>{
             res.json({msg: `SUPPLIER ${supplier_id} has been deleted`})
         })
 

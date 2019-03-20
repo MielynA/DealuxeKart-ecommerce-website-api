@@ -3,18 +3,18 @@ supplierService = {}
 
 
 
-supplierService.post = (customerId, username, supplierPassword, shopName, phone, email, address, country) => {
-    return db.none('INSERT INTO Suppliers (customerId, username, supplierPassword, shopName, phone, email, address, country) VALUES (${customerId},${username},${supplierPassword},${shopName},${phone},${email},${address},${country}) RETURNING supplierId', 
-         {customerId, username, supplierPassword, shopName, phone, email, address, country})
+supplierService.post = (customerId, username, supplierPassword, shopName, phone, email, address, country, createdAt, updatedAt,imgurl) => {
+    return db.none('INSERT INTO Suppliers (customerId, username, supplierPassword, shopName, phone, email, address, country, createdAt, updatedAt,imgurl) VALUES (${customerId},${username},${supplierPassword},${shopName},${phone},${email},${address},${country},${createdAt},${updatedAt},${imgurl}) RETURNING supplierId', 
+         {customerId, username, supplierPassword, shopName, phone, email, address, country,createdAt, updatedAt,imgurl})
     }
 
 supplierService.get = (supplierId) => {
     return db.one('SELECT * FROM Suppliers WHERE supplierId = ${supplierId}', {supplierId})
 }
 
-supplierService.put = (supplierId, customerId, username, supplierPassword, shopName, phone, email, address, country) => {
-    return db.none('UPDATE Suppliers SET customerId = ${customerId}, username = &{username}, supplierPassword = ${supplierPassword}, shopName = ${shopName}, phone = ${phone}, email =${email}, address = ${address}, country = ${country} WHERE supplierId = ${supplierId}', 
-     {supplierId, customerId, username, supplierPassword, shopName, phone, email, address,country})
+supplierService.put = (supplierId, customerId, username, supplierPassword, shopName, phone, email, address, country,createdAt, updatedAt,imgurl) => {
+    return db.none('UPDATE Suppliers SET customerId = ${customerId}, username = &{username}, supplierPassword = ${supplierPassword}, shopName = ${shopName}, phone = ${phone}, email =${email}, address = ${address}, country = ${country}, createdAt = ${createdAt}, updatedAt= ${updatedAt} , imgurl = ${imgurl}WHERE supplierId = ${supplierId}', 
+     {supplierId, customerId, username, supplierPassword, shopName, phone, email, address,country, createdAt, updatedAt,imgurl})
 }
 
 supplierService.delete = (supplierId) => {

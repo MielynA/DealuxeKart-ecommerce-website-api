@@ -1,9 +1,9 @@
 const db = require('../db/database');
 customerService = {}
 
-customerService.post = (username, userPassword, email, billingAdd, city, state, creditCard) => {
-    return db.none('INSERT INTO Customer (username, userPassword, email, billingAdd, city, state, creditCard) VALUES (${username},${userPassword},${email},${billingAdd},${city},${state},${creditCard})', 
-         {username, userPassword, email, billingAdd, city, state, creditCard})
+customerService.post = (username, password, email, billingAdd, city, state, creditCard,createdAt, updatedAt) => {
+    return db.none('INSERT INTO Customer (username, password, email, billingAdd, city, state, creditCard, createdAt, updatedAt) VALUES (${username},${password},${email},${billingAdd},${city},${state},${creditCard}, ${createdAt}, ${updatedAt})', 
+         {username, password, email, billingAdd, city, state, creditCard, createdAt, updatedAt})
     }
 
 customerService.get = (customerId) => {
@@ -11,9 +11,9 @@ customerService.get = (customerId) => {
     return db.one('SELECT * FROM Customer WHERE customerId = ${customerId}', {customerId})
 }
 
-customerService.put = (customerId, username, userPassword, email, billingAdd, city, state, creditCard) => {
-    return db.none('UPDATE Customer SET username = ${username}, userPassword = ${userPassword}, email = ${email}, billingAdd = ${billingAdd}, city = ${city}, state = ${state}, creditCard = ${creditCard} WHERE customerId = ${customerId}', 
-     {customerId, username, userPassword, email, billingAdd, city, state, creditCard})
+customerService.put = (customerId, username, password, email, billingAdd, city, state, creditCard, createdAt, updatedAt) => {
+    return db.none('UPDATE Customer SET username = ${username}, password = ${password}, email = ${email}, billingAdd = ${billingAdd}, city = ${city}, state = ${state}, creditCard = ${creditCard}, createdAt = ${createdAt}, updatedAt = ${updatedAt} WHERE customerId = ${customerId}', 
+     {customerId, username, password, email, billingAdd, city, state, creditCard,createdAt, updatedAt})
 }
 
 customerService.delete = (customerId) => {

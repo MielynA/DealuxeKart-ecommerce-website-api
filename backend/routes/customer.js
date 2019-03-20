@@ -5,8 +5,8 @@ const customerService = require ('../services/customer_services');
 
 //--- CREATE CUSTOMERS 
 app.post('/', (req,res)=>{
-    const { username, userPassword, email, billingAdd, city, state, creditCard } = req.body; 
-    customerService.post(username, userPassword, email, billingAdd, city, state, creditCard).then(()=>{
+    const { username, password, email, billingAdd, city, state, creditCard, createdAt, updatedAt } = req.body; 
+    customerService.post(username, password, email, billingAdd, city, state, creditCard,createdAt, updatedAt).then(()=>{
             res.json({msg: 'new customer is created!'})
         })
         .catch(err=>{
@@ -32,8 +32,8 @@ app.get('/:cust_id', (req, res)=>{
 //--- EDIT CUSTOMER INFO 
 app.put('/:cust_id', (req,res)=>{
     const {cust_id} = req.params; 
-    const {username,userPassword,email,billingAdd,city,state,creditCard} = req.body; 
-        customerService.put(cust_id, username, userPassword, email, billingAdd, city, state, creditCard).then((data)=>{
+    const {username,password,email,billingAdd,city,state,creditCard,createdAt, updatedAt} = req.body; 
+        customerService.put(cust_id, username, password, email, billingAdd, city, state, creditCard,createdAt, updatedAt).then((data)=>{
             res.json({msg: `customer ${cust_id} ${username} is udpated!`})
         })
         .catch(err=>{
@@ -45,9 +45,9 @@ app.put('/:cust_id', (req,res)=>{
 //--- DELETE CUSTOMER INFO 
 app.delete('/:cust_id', (req,res)=>{
     const{cust_id} = req.params; 
-    const {username,userPassword,email,billingAdd,city,state,creditCard} = req.body;
+    const {username,password,email,billingAdd,city,state,creditCard,createdAt, updatedAt} = req.body;
   
-        customerService.delete(cust_id,username,userPassword,email,billingAdd,city,state,creditCard).then(()=>{
+        customerService.delete(cust_id,username,password,email,billingAdd,city,state,creditCard,createdAt, updatedAt).then(()=>{
             res.json({msg: `customer ${cust_id} ${username} has been deleted`})
         })
 
