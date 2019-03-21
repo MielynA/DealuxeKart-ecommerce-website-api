@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "$(npm bin)/jest --coverage && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
-    "start": "node index.js",
     "nodemon": "nodemon",
-    "write-coveralls": "rm -rf .coveralls.yml && echo \"repo_token:$COVERAGE_TOKEN\" >> .coveralls.yml"
+    "write-coveralls": "rm -rf .coveralls.yml && echo \"repo_token:$COVERAGE_TOKEN\" >> .coveralls.yml",
+    "start": "node index.js"
   },
   "author": "me",
   "license": "ISC",
