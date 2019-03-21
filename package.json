@@ -4,10 +4,10 @@
   "description": "DealuxeKart server",
   "main": "index.js",
   "scripts": {
-    "test": "$(npm bin)/jest --coverage && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
-    "nodemon": "nodemon",
-    "write-coveralls": "rm -rf .coveralls.yml && echo \"repo_token:$COVERAGE_TOKEN\" >> .coveralls.yml",
-    "start": "node index.js"
+    "start": "node index.js",
+    "start:local": "$(npm bin)/nodemon index.js &",
+    "test": "$(npm bin)/jest --coverage && cat ./coverage/lcov.info | $(npm bin)/coveralls",
+    "write-coveralls": "rm -rf .coveralls.yml && echo \"repo_token:$CODE_COVERAGE_TOKEN\" >> .coveralls.yml"
   },
   "author": "me",
   "license": "ISC",
