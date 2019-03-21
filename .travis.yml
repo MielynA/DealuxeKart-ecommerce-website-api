@@ -4,7 +4,7 @@ node_js:
 install:
   - npm install
 before_script:
-  - export CODE_COVERAGE_TOKEN=$CODE_COVERAGE_TOKEN
+  - export COVERAGE_TOKEN=$COVERAGE_TOKEN
   - export HEROKU_KEY=$HEROKU_KEY
 script:
   - npm run write-coveralls
