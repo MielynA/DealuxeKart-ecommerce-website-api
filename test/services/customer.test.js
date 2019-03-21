@@ -21,7 +21,7 @@ customerService.post("Mie", "admin123", "mie@email.com", "queens", "nyc", "nyc" 
 })
 
 test("objectWithInfo", ()=>{
-    const customerService = require ("../../backend/services/customer_services");
+    
     customerService.post("Mie", "admin123", "mie@email.com", "queens", "nyc", "nyc" , 12945, "2019-01-01", "2019-01-01").then(data => {
            // expect(data).toBe(data)
             expect(data).toEqual({username : "Mie", password : "admin123", email : "mie@email.com", billingAdd : "queens", city: "NYC", state: "NYC", creditCard: 12945, createdAt: "2019-01-01", updatedAt: "2019-01-01" , createdAt: "2019-01-01", updatedAt: "2019-01-01" })
@@ -30,7 +30,7 @@ test("objectWithInfo", ()=>{
 
 //--- TEST FOR GET CUSTOMER SERVICE
 test("objectWithoutInfo", ()=>{
-const customerService = require ("../../backend/services/customer_services");
+
 customerService.get("Mie", "admin123", "mie@email.com", "queens", "nyc", "nyc" , 12945, "2019-01-01", "2019-01-01").then(data => {
         expect(data).toBe(undefined)
         //expect(data).toEqual({username : "Mie", password : 10383, email : "lara@email.com", billingAdd : "Brooklyn", city: "NYC", state: "NYC", creditCard: 01010 })
@@ -38,7 +38,7 @@ customerService.get("Mie", "admin123", "mie@email.com", "queens", "nyc", "nyc" ,
 })
 
 test("objectWithInfo", ()=>{
-    const customerService = require ("../../backend/services/customer_services");
+
     customerService.get("Mie", "admin123", "mie@email.com", "queens", "nyc", "nyc" , 12945, "2019-01-01", "2019-01-01").then(data => {
            // expect(data).toBe(data)
             expect(data).toEqual({username : "Mie", password : "admin123", email : "mie@email.com", billingAdd : "queens", city: "NYC", state: "NYC", creditCard: 12945, createdAt: "2019-01-01", updatedAt: "2019-01-01" })
@@ -46,7 +46,7 @@ test("objectWithInfo", ()=>{
     })
 //--- TEST FOR UPDATE/PUT CUSTOMER SERVICEž
 test("objectWithoutInfo", ()=>{
-    const customerService = require ("../../backend/services/customer_services");
+
     customerService.put("Mie", "admin123", "mie@email.com", "queens", "nyc", "nyc" , 12945, "2019-01-01", "2019-01-01").then(data => {
             expect(data).toBe(undefined)
             //expect(data).toEqual({username : "Mie", password : 10383, email : "lara@email.com", billingAdd : "Brooklyn", city: "NYC", state: "NYC", creditCard: 01010 })
@@ -54,7 +54,7 @@ test("objectWithoutInfo", ()=>{
     })
     
 test("objectWithInfo", ()=>{
-    const customerService = require ("../../backend/services/customer_services");
+
     customerService.put("Mie", "admin123", "mie@email.com", "queens", "nyc", "nyc" , 12945, "2019-01-01", "2019-01-01").then(data => {
                // expect(data).toBe(data)
                 expect(data).toEqual({username : "Mie", password : "admin123", email : "mie@email.com", billingAdd : "queens", city: "NYC", state: "NYC", creditCard: 12945, createdAt: "2019-01-01", updatedAt: "2019-01-01"  })
@@ -63,14 +63,14 @@ test("objectWithInfo", ()=>{
 
 //--- TEST FOR DELETE CUSTOMER SERVICE
 test("objectWithoutInfo", ()=>{
-    const customerService = require ("../../backend/services/customer_services");
+ 
     customerService.delete("Mie", "admin123", "mie@email.com", "queens", "nyc", "nyc" , 12945, "2019-01-01", "2019-01-01").then(data => {
             expect(data).toBe(undefined)
             //expect(data).toEqual({username : "Mie", password : 10383, email : "lara@email.com", billingAdd : "Brooklyn", city: "NYC", state: "NYC", creditCard: 01010 })
         })
     })
 test("objectWithInfo", ()=>{
-        const customerService = require ("../../backend/services/customer_services");
+
         customerService.delete("Mie", "admin123", "mie@email.com", "queens", "nyc", "nyc" , 12945, "2019-01-01", "2019-01-01").then(data => {
                // expect(data).toBe(data)
                 expect(data).toEqual({username : "Mie", password : "admin123", email : "mie@email.com", billingAdd : "queens", city: "NYC", state: "NYC", creditCard: 12945, createdAt: "2019-01-01", updatedAt: "2019-01-01"  })
