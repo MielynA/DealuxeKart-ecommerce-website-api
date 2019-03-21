@@ -1,5 +1,5 @@
-jest.mock('pg-promise');
-const pgp = require('pg-promise');
+jest.mock("pg-promise");
+const pgp = require("pg-promise");
 
 pgp.mockImplementation(() => {
     return function() {
@@ -10,69 +10,69 @@ pgp.mockImplementation(() => {
         }
     }
 })
-const customerService = require ('../../backend/services/customer_services');
+const customerService = require ("../../backend/services/customer_services");
 //--- TEST FOR POST CUSTOMER SERVICE 
 test("objectWithoutInfo", ()=>{
    
-customerService.post("Mie", 123, "mie@email.com", "Queens", "NYC", "NYC", 59679).then(data => {
+customerService.post("Mie", "admin123", "mie@email.com", "queens", "nyc", "nyc" , 12945, "2019-01-01", "2019-01-01").then(data => {
         expect(data).toBe(undefined)
-        //expect(data).toEqual({userName : "Mie", userPassword : 10383, email : "lara@email.com", billingAdd : "Brooklyn", city: "NYC", state: "NYC", creditCard: 01010 })
+        //expect(data).toEqual({username : "Mie", password : 10383, email : "lara@email.com", billingAdd : "Brooklyn", city: "NYC", state: "NYC", creditCard: 01010 })
     })
 })
 
 test("objectWithInfo", ()=>{
-    const customerService = require ('../../backend/services/customer_services');
-    customerService.post("Mie", 123, "mie@email.com", "Queens", "NYC", "NYC", 59679).then(data => {
+    const customerService = require ("../../backend/services/customer_services");
+    customerService.post("Mie", "admin123", "mie@email.com", "queens", "nyc", "nyc" , 12945, "2019-01-01", "2019-01-01").then(data => {
            // expect(data).toBe(data)
-            expect(data).toEqual({userName : "Mie", userPassword : 123, email : "mie@email.com", billingAdd : "Queens", city: "NYC", state: "NYC", creditCard: 59679 })
+            expect(data).toEqual({username : "Mie", password : "admin123", email : "mie@email.com", billingAdd : "queens", city: "NYC", state: "NYC", creditCard: 12945, createdAt: "2019-01-01", updatedAt: "2019-01-01" , createdAt: "2019-01-01", updatedAt: "2019-01-01" })
         })
     })
 
 //--- TEST FOR GET CUSTOMER SERVICE
 test("objectWithoutInfo", ()=>{
-const customerService = require ('../../backend/services/customer_services');
-customerService.get("Mie", 123, "mie@email.com", "Queens", "NYC", "NYC", 59679).then(data => {
+const customerService = require ("../../backend/services/customer_services");
+customerService.get("Mie", "admin123", "mie@email.com", "queens", "nyc", "nyc" , 12945, "2019-01-01", "2019-01-01").then(data => {
         expect(data).toBe(undefined)
-        //expect(data).toEqual({userName : "Mie", userPassword : 10383, email : "lara@email.com", billingAdd : "Brooklyn", city: "NYC", state: "NYC", creditCard: 01010 })
+        //expect(data).toEqual({username : "Mie", password : 10383, email : "lara@email.com", billingAdd : "Brooklyn", city: "NYC", state: "NYC", creditCard: 01010 })
     })
 })
 
 test("objectWithInfo", ()=>{
-    const customerService = require ('../../backend/services/customer_services');
-    customerService.get("Mie", 123, "mie@email.com", "Queens", "NYC", "NYC", 59679).then(data => {
+    const customerService = require ("../../backend/services/customer_services");
+    customerService.get("Mie", "admin123", "mie@email.com", "queens", "nyc", "nyc" , 12945, "2019-01-01", "2019-01-01").then(data => {
            // expect(data).toBe(data)
-            expect(data).toEqual({userName : "Mie", userPassword : 123, email : "mie@email.com", billingAdd : "Queens", city: "NYC", state: "NYC", creditCard: 59679 })
+            expect(data).toEqual({username : "Mie", password : "admin123", email : "mie@email.com", billingAdd : "queens", city: "NYC", state: "NYC", creditCard: 12945, createdAt: "2019-01-01", updatedAt: "2019-01-01" })
         })
     })
-//--- TEST FOR UPDATE/PUT CUSTOMER SERVICE 
+//--- TEST FOR UPDATE/PUT CUSTOMER SERVICEž
 test("objectWithoutInfo", ()=>{
-    const customerService = require ('../../backend/services/customer_services');
-    customerService.put("Mie", 123, "mie@email.com", "Queens", "NYC", "NYC", 59679).then(data => {
+    const customerService = require ("../../backend/services/customer_services");
+    customerService.put("Mie", "admin123", "mie@email.com", "queens", "nyc", "nyc" , 12945, "2019-01-01", "2019-01-01").then(data => {
             expect(data).toBe(undefined)
-            //expect(data).toEqual({userName : "Mie", userPassword : 10383, email : "lara@email.com", billingAdd : "Brooklyn", city: "NYC", state: "NYC", creditCard: 01010 })
+            //expect(data).toEqual({username : "Mie", password : 10383, email : "lara@email.com", billingAdd : "Brooklyn", city: "NYC", state: "NYC", creditCard: 01010 })
         })
     })
     
 test("objectWithInfo", ()=>{
-    const customerService = require ('../../backend/services/customer_services');
-    customerService.put("Mie", 123, "mie@email.com", "Queens", "NYC", "NYC", 59679).then(data => {
+    const customerService = require ("../../backend/services/customer_services");
+    customerService.put("Mie", "admin123", "mie@email.com", "queens", "nyc", "nyc" , 12945, "2019-01-01", "2019-01-01").then(data => {
                // expect(data).toBe(data)
-                expect(data).toEqual({userName : "Mie", userPassword : 123, email : "mie@email.com", billingAdd : "Queens", city: "NYC", state: "NYC", creditCard: 59679 })
+                expect(data).toEqual({username : "Mie", password : "admin123", email : "mie@email.com", billingAdd : "queens", city: "NYC", state: "NYC", creditCard: 12945, createdAt: "2019-01-01", updatedAt: "2019-01-01"  })
             })
         })
 
 //--- TEST FOR DELETE CUSTOMER SERVICE
 test("objectWithoutInfo", ()=>{
-    const customerService = require ('../../backend/services/customer_services');
-    customerService.delete("Mie", 123, "mie@email.com", "Queens", "NYC", "NYC", 59679).then(data => {
+    const customerService = require ("../../backend/services/customer_services");
+    customerService.delete("Mie", "admin123", "mie@email.com", "queens", "nyc", "nyc" , 12945, "2019-01-01", "2019-01-01").then(data => {
             expect(data).toBe(undefined)
-            //expect(data).toEqual({userName : "Mie", userPassword : 10383, email : "lara@email.com", billingAdd : "Brooklyn", city: "NYC", state: "NYC", creditCard: 01010 })
+            //expect(data).toEqual({username : "Mie", password : 10383, email : "lara@email.com", billingAdd : "Brooklyn", city: "NYC", state: "NYC", creditCard: 01010 })
         })
     })
 test("objectWithInfo", ()=>{
-        const customerService = require ('../../backend/services/customer_services');
-        customerService.delete("Mie", 123, "mie@email.com", "Queens", "NYC", "NYC", 59679).then(data => {
+        const customerService = require ("../../backend/services/customer_services");
+        customerService.delete("Mie", "admin123", "mie@email.com", "queens", "nyc", "nyc" , 12945, "2019-01-01", "2019-01-01").then(data => {
                // expect(data).toBe(data)
-                expect(data).toEqual({userName : "Mie", userPassword : 123, email : "mie@email.com", billingAdd : "Queens", city: "NYC", state: "NYC", creditCard: 59679 })
+                expect(data).toEqual({username : "Mie", password : "admin123", email : "mie@email.com", billingAdd : "queens", city: "NYC", state: "NYC", creditCard: 12945, createdAt: "2019-01-01", updatedAt: "2019-01-01"  })
             })
         })
