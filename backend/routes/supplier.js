@@ -7,7 +7,8 @@ const supplierService = require ('../services/supplier_services');
 app.post('/', (req,res)=>{
     const {customerId, username, supplierPassword, shopName, phone, email, address, country, createdAt, updatedAt, imgurl } = req.body; 
     supplierService.post(customerId, username, supplierPassword, shopName, phone, email, address,country, createdAt, updatedAt,imgurl).then((data)=>{
-            res.json({msg: 'created!'})
+        res.status(200);    
+        res.json({msg: 'created!'})
         })
         .catch(err=>{
             res.status(404).json({error: err.toString('utf-8')})
