@@ -4,13 +4,14 @@ const pgp = require("pg-promise");
 pgp.mockImplementation(() => {
     return function() {
         return {
-            none: () => Promise.resolve(),
+            none: () => Promise.resolve({'test':1}),
             one: () => Promise.resolve(),
         }
     } 
 })
 
 const productService = require ("../backend/services/products_services");
+
 //--- TEST FOR POST PRODUCTS SERVICE 
 
 test("objectWithoutInfo", ()=>{ 
