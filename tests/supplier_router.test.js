@@ -4,7 +4,7 @@ const pgp = require("pg-promise");
 pgp.mockImplementation(() => {
     return function() {
         return {
-            none: () => Promise.resolve({}),
+            none: () => Promise.resolve(),
             one: () => Promise.resolve(),
         }
     } 
