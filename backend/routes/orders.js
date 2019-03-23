@@ -8,7 +8,7 @@ app.post('/', (req,res) => {
        res.json({msg: 'new orders is created!'})
    })
    .catch(err=>{
-       res.status(404).json({error: err.toString('utf-8')})
+       res.status(404).json({error: err})
    })
 })
 
@@ -22,7 +22,7 @@ app.get('/:order_id', (req,res)=>{
         res.json({msg: data})
     })
     .catch(err=>{
-        res.status(404).json({error: err.toString('utf-8')})
+        res.status(404).json({error: err})
     })
 })
 
@@ -34,7 +34,7 @@ app.put('/:order_id', (req,res) => {
        res.json({msg: `customer ${order_id} is udpated!`})
    })
    .catch(err=>{
-       res.status(404).json({error: err.toString('utf-8')})
+       res.status(404).json({error: err})
    })
 })
 
@@ -47,7 +47,7 @@ app.delete('/:order_id', (req,res)=>{
         })
 
     .catch(err=>{
-        res.status(404).json({error: err.toString('utf-8')})
+        res.status(404).json({error: err})
     })
 })
 module.exports = {orderRoutes: app, } 
