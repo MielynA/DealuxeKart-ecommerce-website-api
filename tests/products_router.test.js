@@ -3,10 +3,10 @@ jest.mock('../backend/services/products_services')
 const {app,} = require('../backend/app');
 const productService = require ("../backend/services/products_services");
 
-test("test get customer",done=>{
+test("test get products",done=>{
     productService.post.mockImplementation(()=> Promise.resolve({test:'1'}))
         request(app)
-         .post('/customer')
+         .post('/products')
          .send({
             "userName" : "Mie", 
             "userPassword" : "10383", 
@@ -27,7 +27,7 @@ test("test get customer",done=>{
 test('post request fail test',done=>{
     productService.post.mockImplementation(()=> Promise.reject())
     request(app)
-        .post('/customer')
+        .post('/products')
         .send({
             "userName" : "Mie", 
             "userPassword" : "10383", 
@@ -46,10 +46,10 @@ test('post request fail test',done=>{
         })
 })
 
-test("to read the customer ",done=>{
+test("to read the products ",done=>{
     productService.get.mockImplementation(()=> Promise.resolve({test:'1'}))
     request(app)
-    .get('/customer/1')
+    .get('/products/1')
     .then(response=>{
         expect(response).toEqual({test:'1'})
         done()
@@ -59,10 +59,10 @@ test("to read the customer ",done=>{
     })
 })
 
-test("to read the customer negative test ",done=>{
+test("to read the products negative test ",done=>{
     productService.get.mockImplementation(()=> Promise.reject())
     request(app)
-    .get('/customer/1')
+    .get('/products/1')
     .then(()=>{
         done()
     })
@@ -72,10 +72,10 @@ test("to read the customer negative test ",done=>{
     })
 })
 
-test("test update customer",done=>{
+test("test update products",done=>{
     productService.put.mockImplementation(()=> Promise.resolve())
         request(app)
-         .post('/customer/1')
+         .post('/products/1')
          
          .then(response=>{
           expect(response).toBe(undefined)
@@ -88,7 +88,7 @@ test("test update customer",done=>{
 test(' put request fail test',done=>{
     productService.put.mockImplementation(()=> Promise.reject())
     request(app)
-        .post('/customer/1')
+        .post('/products/1')
         
         .then(()=>{
             done();
@@ -102,7 +102,7 @@ test(' put request fail test',done=>{
 test('delete request test', done =>{
     productService.delete.mockImplementation(() => Promise.resolve());
     request(app)
-        .delete('/customer/1')
+        .delete('/products/1')
         .then(response=>{
             expect(response).toBe(undefined)
             done();
@@ -115,7 +115,7 @@ test('delete request test', done =>{
 test('delete request fail test', done =>{
     productService.delete.mockImplementation(() => Promise.reject());
     request(app)
-        .delete('/customer/1')
+        .delete('/products/1')
         .then(()=>{
             done();
         })

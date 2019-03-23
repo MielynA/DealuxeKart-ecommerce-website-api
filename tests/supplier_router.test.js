@@ -74,7 +74,7 @@ const supplierService = require ("../backend/services/supplier_services");
 test("post create for supplier",done=>{
     supplierService.post.mockImplementation(()=> Promise.resolve({test:'1'}))
         request(app)
-         .post('/customer')
+         .post('/supplier')
          .send({
             "userName" : "Mie", 
             "userPassword" : "10383", 
@@ -95,7 +95,7 @@ test("post create for supplier",done=>{
 test('post request fail test',done=>{
     supplierService.post.mockImplementation(()=> Promise.reject())
     request(app)
-        .post('/customer')
+        .post('/supplier')
         .send({
             "userName" : "Mie", 
             "userPassword" : "10383", 
@@ -114,10 +114,10 @@ test('post request fail test',done=>{
         })
 })
 
-test("to read the customer ",done=>{
+test("to read the supplier ",done=>{
     supplierService.get.mockImplementation(()=> Promise.resolve({test:'1'}))
     request(app)
-    .get('/customer/1')
+    .get('/supplier/1')
     .then(response=>{
         expect(response).toEqual({test:'1'})
         done()
@@ -127,10 +127,10 @@ test("to read the customer ",done=>{
     })
 })
 
-test("to read the customer negative test ",done=>{
+test("to read the supplier negative test ",done=>{
     supplierService.get.mockImplementation(()=> Promise.reject())
     request(app)
-    .get('/customer/1')
+    .get('/supplier/1')
     .then(()=>{
         done()
     })
@@ -140,10 +140,10 @@ test("to read the customer negative test ",done=>{
     })
 })
 
-test("test update customer",done=>{
+test("test update supplier",done=>{
     supplierService.put.mockImplementation(()=> Promise.resolve())
         request(app)
-         .post('/customer/1')
+         .post('/supplier/1')
          
          .then(response=>{
           expect(response).toBe(undefined)
@@ -156,7 +156,7 @@ test("test update customer",done=>{
 test(' put request fail test',done=>{
     supplierService.put.mockImplementation(()=> Promise.reject())
     request(app)
-        .post('/customer/1')
+        .post('/supplier/1')
         
         .then(()=>{
             done();
@@ -170,7 +170,7 @@ test(' put request fail test',done=>{
 test('delete request test', done =>{
     supplierService.delete.mockImplementation(() => Promise.resolve());
     request(app)
-        .delete('/customer/1')
+        .delete('/supplier/1')
         .then(response=>{
             expect(response).toBe(undefined)
             done();
@@ -183,7 +183,7 @@ test('delete request test', done =>{
 test('delete request fail test', done =>{
     supplierService.delete.mockImplementation(() => Promise.reject());
     request(app)
-        .delete('/customer/1')
+        .delete('/supplier/1')
         .then(()=>{
             done();
         })
