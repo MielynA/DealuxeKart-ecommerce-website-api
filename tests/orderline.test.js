@@ -1,71 +1,200 @@
-jest.mock('pg-promise');
-const pgp = require('pg-promise');
+const request = require('supertest');
+jest.mock('../backend/services/orderline_service')
+const {app,} = require('../backend/app');
+const orderLineService = require ("../backend/services/orderline_service");
 
-pgp.mockImplementation(() => {
-    return function() {
-        return {
-            none: () => Promise.resolve(),
-            one: () => Promise.resolve(),
-        }
-    }
+test("test get orderline",done=>{
+    orderLineService.post.mockImplementation(()=> Promise.resolve({test:'1'}))
+        request(app)
+         .post('/orderline')
+         .send({
+            "userName" : "Mie", 
+            "userPassword" : "10383", 
+            "email" : "lara@email.com", 
+            "billingAdd" : "Brooklyn", 
+            "city": "NYC", 
+            "state": "NYC", 
+            "creditCard": "01010",
+         })
+         .then(response=>{
+          expect(response).toEqual({test:'1'})
+            done()
+            })
+            .catch(e=>{
+                done()
+            })
+        })
+test('post request fail test',done=>{
+    orderLineService.post.mockImplementation(()=> Promise.reject())
+    request(app)
+        .post('/orderline')
+        .send({
+            "userName" : "Mie", 
+            "userPassword" : "10383", 
+            "email" : "lara@email.com", 
+            "billingAdd" : "Brooklyn", 
+            "city": "NYC", 
+            "state": "NYC", 
+            "creditCard": "01010",
+        })
+        .then(()=>{
+            done();
+        })
+        .catch(e=>{
+            expect().toEqual(undefined)
+            done()
+        })
 })
 
-const orderLineService = require('../backend/services/orderline_service')
+test("to read the orderline ",done=>{
+    orderLineService.get.mockImplementation(()=> Promise.resolve({test:'1'}))
+    request(app)
+    .get('/orderline/1')
+    .then(response=>{
+        expect(response).toEqual({test:'1'})
+        done()
+    })
+    .catch(e=>{
+        done()
+    })
+})
 
-//--- TEST FOR POST ORDERLINE SERVICE 
+test("to read the orderline negative test ",done=>{
+    orderLineService.get.mockImplementation(()=> Promise.reject())
+    request(app)
+    .get('/orderline/1')
+    .then(()=>{
+        done()
+    })
+    .catch(e=>{
+        expect().toBe(undefined)
+        done()
+    })
+})
 
-test("objectWithoutInfo", ()=>{ 
+test("test update orderline",done=>{
+    orderLineService.put.mockImplementation(()=> Promise.resolve())
+        request(app)
+         .post('/orderline/1')
+         
+         .then(response=>{
+          expect(response).toBe(undefined)
+            done()
+            })
+            .catch(e=>{
+                done()
+            })
+        })
+test(' put request fail test',done=>{
+    orderLineService.put.mockImplementation(()=> Promise.reject())
+    request(app)
+        .post('/orderline/1')
+        
+        .then(()=>{
+            done();
+        })
+        .catch(e=>{
+            expect().toBe(undefined)
+            done()
+        })
+})
+
+test('delete request test', done =>{
+    orderLineService.delete.mockImplementation(() => Promise.resolve());
+    request(app)
+        .delete('/orderline/1')
+        .then(response=>{
+            expect(response).toBe(undefined)
+            done();
+        })
+        .catch(e => {
+          done();
+        })
+})
+
+test('delete request fail test', done =>{
+    orderLineService.delete.mockImplementation(() => Promise.reject());
+    request(app)
+        .delete('/orderline/1')
+        .then(()=>{
+            done();
+        })
+        .catch(e => {
+            expect().toBe(undefined)
+            done();
+        })
+})
+
+
+
+// jest.mock('pg-promise');
+// const pgp = require('pg-promise');
+
+// pgp.mockImplementation(() => {
+//     return function() {
+//         return {
+//             none: () => Promise.resolve(),
+//             one: () => Promise.resolve(),
+//         }
+//     }
+// })
+
+// const orderLineService = require('../backend/services/orderline_service')
+
+// //--- TEST FOR POST ORDERLINE SERVICE 
+
+// test("objectWithoutInfo", ()=>{ 
    
-orderLineService.post(1,1,30).then(data => {
-        expect(data).toBe(undefined)
-    })
-})
+// orderLineService.post(1,1,30).then(data => {
+//         expect(data).toBe(undefined)
+//     })
+// })
 
 
-test("objectWithInfo", ()=>{
-    orderLineService.post(1,1,30 ).then(data => {
-           // expect(data).toBe(data)
-            expect(data).toEqual({ orderId: 1,productId: 1,quantity: 30})
-        })
-    })
+// test("objectWithInfo", ()=>{
+//     orderLineService.post(1,1,30 ).then(data => {
+//            // expect(data).toBe(data)
+//             expect(data).toEqual({ orderId: 1,productId: 1,quantity: 30})
+//         })
+//     })
 
-//--- TEST FOR GET ORDERLINE SERVICE
-test("objectWithoutInfo", ()=>{
-orderLineService.get(1,1,30 ).then(data => {
-        expect(data).toBe(undefined)    
-    })
-})
+// //--- TEST FOR GET ORDERLINE SERVICE
+// test("objectWithoutInfo", ()=>{
+// orderLineService.get(1,1,30 ).then(data => {
+//         expect(data).toBe(undefined)    
+//     })
+// })
 
-test("objectWithInfo", ()=>{
-    orderLineService.get(1,1,30 ).then(data => {
-            expect(data).toEqual({ orderId: 1,productId: 1,quantity: 30 })
-        })
-    })
-//--- TEST FOR UPDATE/PUT ORDERLINE SERVICEž
-test("objectWithoutInfo", ()=>{
-    orderLineService.put(1,1,30 ).then(data => {
-            expect(data).toBe(undefined)
-        })
-    })
+// test("objectWithInfo", ()=>{
+//     orderLineService.get(1,1,30 ).then(data => {
+//             expect(data).toEqual({ orderId: 1,productId: 1,quantity: 30 })
+//         })
+//     })
+// //--- TEST FOR UPDATE/PUT ORDERLINE SERVICEž
+// test("objectWithoutInfo", ()=>{
+//     orderLineService.put(1,1,30 ).then(data => {
+//             expect(data).toBe(undefined)
+//         })
+//     })
     
-test("objectWithInfo", ()=>{
+// test("objectWithInfo", ()=>{
 
-    orderLineService.put(1,1,30 ).then(data => {
-                expect(data).toEqual({ orderId: 1,productId: 1,quantity: 30  })
-            })
-        })
+//     orderLineService.put(1,1,30 ).then(data => {
+//                 expect(data).toEqual({ orderId: 1,productId: 1,quantity: 30  })
+//             })
+//         })
 
-//--- TEST FOR DELETE ORDERLINE SERVICE
-test("objectWithoutInfo", ()=>{
-    orderLineService.delete(1,1,30 ).then(data => {
-            expect(data).toBe(undefined)
-        })
-    })
-test("objectWithInfo", ()=>{
-        orderLineService.delete(1,1,30 ).then(data => {
-                expect(data).toEqual({ orderId: 1,productId: 1,quantity: 30  })
-            })
-        })
+// //--- TEST FOR DELETE ORDERLINE SERVICE
+// test("objectWithoutInfo", ()=>{
+//     orderLineService.delete(1,1,30 ).then(data => {
+//             expect(data).toBe(undefined)
+//         })
+//     })
+// test("objectWithInfo", ()=>{
+//         orderLineService.delete(1,1,30 ).then(data => {
+//                 expect(data).toEqual({ orderId: 1,productId: 1,quantity: 30  })
+//             })
+//         })
 
 // test('Expect status 200 if db promise resolves', done => {
 //     orderLineService.post.mockImplementation(() => Promise.resolve());
