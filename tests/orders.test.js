@@ -18,11 +18,10 @@ test("test get orders",done=>{
          })
          .then(response=>{
           expect(response).toEqual({test:'1'})
-            done()
-            })
+                        })
             .catch(e=>{
-                done()
-            })
+                            })
+            done()
         })
 test('post request fail test',done=>{
     orderService.post.mockImplementation(()=> Promise.reject())
@@ -38,12 +37,12 @@ test('post request fail test',done=>{
             "creditCard": "01010",
         })
         .then(()=>{
-            done();
+            
         })
         .catch(e=>{
             expect().toEqual(undefined)
-            done()
-        })
+                    })
+        done()
 })
 
 test("to read the orders ",done=>{
@@ -52,11 +51,10 @@ test("to read the orders ",done=>{
     .get('/orders/1')
     .then(response=>{
         expect(response).toEqual({test:'1'})
-        done()
-    })
+            })
     .catch(e=>{
-        done()
-    })
+            })
+            done()
 })
 
 test("to read the orders negative test ",done=>{
@@ -64,12 +62,11 @@ test("to read the orders negative test ",done=>{
     request(app)
     .get('/orders/1')
     .then(()=>{
-        done()
-    })
+            })
     .catch(e=>{
         expect().toBe(undefined)
-        done()
-    })
+            })
+            done()
 })
 
 test("test update orders",done=>{
@@ -79,11 +76,10 @@ test("test update orders",done=>{
          
          .then(response=>{
           expect(response).toBe(undefined)
-            done()
-            })
+                        })
             .catch(e=>{
-                done()
-            })
+                            })
+                            done()
         })
 test(' put request fail test',done=>{
     orderService.put.mockImplementation(()=> Promise.reject())
@@ -91,12 +87,12 @@ test(' put request fail test',done=>{
         .post('/orders/1')
         
         .then(()=>{
-            done();
+            
         })
         .catch(e=>{
             expect().toBe(undefined)
-            done()
-        })
+                    })
+                    done()
 })
 
 test('delete request test', done =>{
@@ -105,11 +101,12 @@ test('delete request test', done =>{
         .delete('/orders/1')
         .then(response=>{
             expect(response).toBe(undefined)
-            done();
+            
         })
         .catch(e => {
-          done();
+          
         })
+        done()
 })
 
 test('delete request fail test', done =>{
@@ -117,12 +114,13 @@ test('delete request fail test', done =>{
     request(app)
         .delete('/orders/1')
         .then(()=>{
-            done();
+            
         })
         .catch(e => {
             expect().toBe(undefined)
-            done();
+            
         })
+        done()
 })
 
 

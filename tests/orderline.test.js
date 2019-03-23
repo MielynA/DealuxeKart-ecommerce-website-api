@@ -18,11 +18,11 @@ test("test get orderline",done=>{
          })
          .then(response=>{
           expect(response).toEqual({test:'1'})
-            done()
             })
             .catch(e=>{
-                done()
+
             })
+            done()
         })
 test('post request fail test',done=>{
     orderLineService.post.mockImplementation(()=> Promise.reject())
@@ -38,12 +38,13 @@ test('post request fail test',done=>{
             "creditCard": "01010",
         })
         .then(()=>{
-            done();
+            
         })
         .catch(e=>{
             expect().toEqual(undefined)
-            done()
+            
         })
+        done()
 })
 
 test("to read the orderline ",done=>{
@@ -52,11 +53,12 @@ test("to read the orderline ",done=>{
     .get('/orderline/1')
     .then(response=>{
         expect(response).toEqual({test:'1'})
-        done()
+        
     })
     .catch(e=>{
-        done()
+        
     })
+    done()
 })
 
 test("to read the orderline negative test ",done=>{
@@ -64,12 +66,13 @@ test("to read the orderline negative test ",done=>{
     request(app)
     .get('/orderline/1')
     .then(()=>{
-        done()
+        
     })
     .catch(e=>{
         expect().toBe(undefined)
-        done()
+        
     })
+    done()
 })
 
 test("test update orderline",done=>{
@@ -79,11 +82,12 @@ test("test update orderline",done=>{
          
          .then(response=>{
           expect(response).toBe(undefined)
-            done()
+            
             })
             .catch(e=>{
-                done()
+                
             })
+            done()
         })
 test(' put request fail test',done=>{
     orderLineService.put.mockImplementation(()=> Promise.reject())
@@ -91,12 +95,13 @@ test(' put request fail test',done=>{
         .post('/orderline/1')
         
         .then(()=>{
-            done();
+            
         })
         .catch(e=>{
             expect().toBe(undefined)
-            done()
+            
         })
+        done()
 })
 
 test('delete request test', done =>{
@@ -105,11 +110,12 @@ test('delete request test', done =>{
         .delete('/orderline/1')
         .then(response=>{
             expect(response).toBe(undefined)
-            done();
+            
         })
         .catch(e => {
-          done();
+          
         })
+        done()
 })
 
 test('delete request fail test', done =>{
@@ -117,12 +123,13 @@ test('delete request fail test', done =>{
     request(app)
         .delete('/orderline/1')
         .then(()=>{
-            done();
+            
         })
         .catch(e => {
             expect().toBe(undefined)
-            done();
+            
         })
+        done()
 })
 
 

@@ -196,10 +196,9 @@ test('delete request fail test', done =>{
     request(app)
         .delete('/customer/1')
         .then(()=>{
-            done();
         })
         .catch(e => {
             expect().toBe(undefined)
-            done();
         })
+        done()
 })

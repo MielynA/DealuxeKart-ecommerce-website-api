@@ -20,11 +20,10 @@ test("test get supplier",done=>{
          })
          .then(response=>{
           expect(response).toEqual({test:'1'})
-            done()
-            })
+                        })
             .catch(e=>{
-                done()
-            })
+                            })
+                            done()
         })
 test('post request fail test',done=>{
     supplierService.post.mockImplementation(()=> Promise.reject())
@@ -42,12 +41,12 @@ test('post request fail test',done=>{
             "updatedAt": "2019-01-01",
         })
         .then(()=>{
-            done();
+            
         })
         .catch(e=>{
             expect().toEqual(undefined)
-            done()
-        })
+                    })
+                    done()
 })
 
 test("to read the supplier ",done=>{
@@ -56,11 +55,10 @@ test("to read the supplier ",done=>{
     .get('/supplier/1')
     .then(response=>{
         expect(response).toEqual({test:'1'})
-        done()
-    })
+            })
     .catch(e=>{
-        done()
-    })
+            })
+            done()
 })
 
 test("to read the supplier negative test ",done=>{
@@ -68,12 +66,11 @@ test("to read the supplier negative test ",done=>{
     request(app)
     .get('/supplier/1')
     .then(()=>{
-        done()
-    })
+            })
     .catch(e=>{
         expect().toBe(undefined)
-        done()
-    })
+            })
+            done()
 })
 
 test("test update supplier",done=>{
@@ -83,11 +80,10 @@ test("test update supplier",done=>{
          
          .then(response=>{
           expect(response).toBe(undefined)
-            done()
-            })
+                        })
             .catch(e=>{
-                done()
-            })
+                            })
+                            done()
         })
 test(' put request fail test',done=>{
     supplierService.put.mockImplementation(()=> Promise.reject())
@@ -95,12 +91,12 @@ test(' put request fail test',done=>{
         .post('/supplier/1')
         
         .then(()=>{
-            done();
+            
         })
         .catch(e=>{
             expect().toBe(undefined)
-            done()
-        })
+                    })
+                    done()
 })
 
 test('delete request test', done =>{
@@ -109,11 +105,12 @@ test('delete request test', done =>{
         .delete('/supplier/1')
         .then(response=>{
             expect(response).toBe(undefined)
-            done();
+            
         })
         .catch(e => {
-          done();
+          
         })
+        done()
 })
 
 test('delete request fail test', done =>{
@@ -121,12 +118,13 @@ test('delete request fail test', done =>{
     request(app)
         .delete('/supplier/1')
         .then(()=>{
-            done();
+            
         })
         .catch(e => {
             expect().toBe(undefined)
-            done();
+            
         })
+        done()
 })
 
 // jest.mock("pg-promise");
