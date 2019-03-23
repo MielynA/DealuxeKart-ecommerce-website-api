@@ -4,7 +4,7 @@ const {app,} = require('../backend/app');
 const supplierService = require ("../backend/services/supplier_services");
 
 test("test get supplier",async (done)=>{
-    supplierService.post.mockImplementation(()=> Promise.resolve({test:'1'}))
+    // supplierService.post.mockImplementation(()=> Promise.resolve({test:'1'}))
         request(app)
          .post('/supplier')
          .send({
@@ -27,7 +27,7 @@ test("test get supplier",async (done)=>{
             })
         })
 test('post request fail test',async (done)=>{
-    supplierService.post.mockImplementation(()=> Promise.reject())
+    // supplierService.post.mockImplementation(()=> Promise.reject())
     request(app)
         .post('/supplier')
         .send({
@@ -51,7 +51,7 @@ test('post request fail test',async (done)=>{
 })
 
 test("to read the supplier ",async (done)=>{
-    supplierService.get.mockImplementation(()=> Promise.resolve({test:'1'}))
+    // supplierService.get.mockImplementation(()=> Promise.resolve({test:'1'}))
     request(app)
     .get('/supplier/1')
     .then(response=>{
@@ -64,7 +64,7 @@ test("to read the supplier ",async (done)=>{
 })
 
 test("to read the supplier negative test ",async (done)=>{
-    supplierService.get.mockImplementation(()=> Promise.reject())
+    // supplierService.get.mockImplementation(()=> Promise.reject())
     request(app)
     .get('/supplier/1')
     .then(()=>{
@@ -77,7 +77,7 @@ test("to read the supplier negative test ",async (done)=>{
 })
 
 test("test update supplier",done=>{
-    supplierService.put.mockImplementation(()=> Promise.resolve())
+    // supplierService.put.mockImplementation(()=> Promise.resolve())
         request(app)
          .post('/supplier/1')
          
@@ -90,7 +90,7 @@ test("test update supplier",done=>{
             })
         })
 test(' put request fail test',done=>{
-    supplierService.put.mockImplementation(()=> Promise.reject())
+    // supplierService.put.mockImplementation(()=> Promise.reject())
     request(app)
         .post('/supplier/1')
         
@@ -104,7 +104,7 @@ test(' put request fail test',done=>{
 })
 
 test('delete request test', done =>{
-    supplierService.delete.mockImplementation(() => Promise.resolve());
+    // supplierService.delete.mockImplementation(() => Promise.resolve());
     request(app)
         .delete('/supplier/1')
         .then(response=>{
@@ -117,7 +117,7 @@ test('delete request test', done =>{
 })
 
 test('delete request fail test', done =>{
-    supplierService.delete.mockImplementation(() => Promise.reject());
+    // supplierService.delete.mockImplementation(() => Promise.reject());
     request(app)
         .delete('/supplier/1')
         .then(()=>{

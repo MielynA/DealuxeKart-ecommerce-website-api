@@ -4,7 +4,7 @@ const {app,} = require('../backend/app');
 const productService = require ("../backend/services/products_services");
 
 test("test get products", async (done)=>{
-    productService.post.mockImplementation(()=> Promise.resolve({test:'1'}))
+    // productService.post.mockImplementation(()=> Promise.resolve({test:'1'}))
         request(app)
          .post('/products')
          .send({
@@ -25,7 +25,7 @@ test("test get products", async (done)=>{
             })
         })
 test('post request fail test',async (done)=>{
-    productService.post.mockImplementation(()=> Promise.reject())
+    // productService.post.mockImplementation(()=> Promise.reject())
     request(app)
         .post('/products')
         .send({
@@ -47,7 +47,7 @@ test('post request fail test',async (done)=>{
 })
 
 test("to read the products ",async (done)=>{
-    productService.get.mockImplementation(()=> Promise.resolve({test:'1'}))
+    // productService.get.mockImplementation(()=> Promise.resolve({test:'1'}))
     request(app)
     .get('/products/1')
     .then(response=>{
@@ -60,7 +60,7 @@ test("to read the products ",async (done)=>{
 })
 
 test("to read the products negative test ",async (done)=>{
-    productService.get.mockImplementation(()=> Promise.reject())
+    // productService.get.mockImplementation(()=> Promise.reject())
     request(app)
     .get('/products/1')
     .then(()=>{
@@ -73,7 +73,7 @@ test("to read the products negative test ",async (done)=>{
 })
 
 test("test update products",async (done)=>{
-    productService.put.mockImplementation(()=> Promise.resolve())
+    // productService.put.mockImplementation(()=> Promise.resolve())
         request(app)
          .post('/products/1')
          
@@ -86,7 +86,7 @@ test("test update products",async (done)=>{
             })
         })
 test(' put request fail test',async (done)=>{
-    productService.put.mockImplementation(()=> Promise.reject())
+    // productService.put.mockImplementation(()=> Promise.reject())
     request(app)
         .post('/products/1')
         
@@ -100,7 +100,7 @@ test(' put request fail test',async (done)=>{
 })
 
 test('delete request test', async (done) =>{
-    productService.delete.mockImplementation(() => Promise.resolve());
+    // productService.delete.mockImplementation(() => Promise.resolve());
     request(app)
         .delete('/products/1')
         .then(response=>{
@@ -113,7 +113,7 @@ test('delete request test', async (done) =>{
 })
 
 test('delete request fail test', async (done) =>{
-    productService.delete.mockImplementation(() => Promise.reject());
+    // productService.delete.mockImplementation(() => Promise.reject());
     request(app)
         .delete('/products/1')
         .then(()=>{

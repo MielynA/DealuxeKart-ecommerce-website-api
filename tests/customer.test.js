@@ -81,7 +81,7 @@ const customerService = require ('../backend/services/customer_services');
 //         })
 
 test("customer with info",async (done)=>{
-    customerService.post.mockImplementation(()=> Promise.resolve({test:'1'}))
+    // customerService.post.mockImplementation(()=> Promise.resolve({test:'1'}))
         request(app)
          .post('/customer')
          .send({
@@ -104,7 +104,7 @@ test("customer with info",async (done)=>{
             })
         })
 test('post request fail test',async (done)=>{
-    customerService.post.mockImplementation(()=> Promise.reject())
+    // customerService.post.mockImplementation(()=> Promise.reject())
     request(app)
         .post('/customer')
         .send({
@@ -126,7 +126,7 @@ test('post request fail test',async (done)=>{
 })
 
 test("to read the customer ",async (done)=>{
-    customerService.get.mockImplementation(()=> Promise.resolve({test:'1'}))
+    // customerService.get.mockImplementation(()=> Promise.resolve({test:'1'}))
     request(app)
     .get('/customer/1')
     .then(response=>{
@@ -139,7 +139,7 @@ test("to read the customer ",async (done)=>{
 })
 
 test("to read the customer negative test ",async (done)=>{
-    customerService.get.mockImplementation(()=> Promise.reject())
+    // customerService.get.mockImplementation(()=> Promise.reject())
     request(app)
     .get('/customer/1')
     .then(()=>{
@@ -152,7 +152,7 @@ test("to read the customer negative test ",async (done)=>{
 })
 
 test("test update customer",async (done)=>{
-    customerService.put.mockImplementation(()=> Promise.resolve())
+    // customerService.put.mockImplementation(()=> Promise.resolve())
         request(app)
          .post('/customer/1')
          
@@ -165,7 +165,7 @@ test("test update customer",async (done)=>{
             })
         })
 test(' put request fail test',async (done)=>{
-    customerService.put.mockImplementation(()=> Promise.reject())
+    // customerService.put.mockImplementation(()=> Promise.reject())
     request(app)
         .post('/customer/1')
         
@@ -179,7 +179,7 @@ test(' put request fail test',async (done)=>{
 })
 
 test('delete request test', async (done) =>{
-    customerService.delete.mockImplementation(() => Promise.resolve());
+    // customerService.delete.mockImplementation(() => Promise.resolve());
     request(app)
         .delete('/customer/1')
         .then(response=>{
@@ -192,7 +192,7 @@ test('delete request test', async (done) =>{
 })
 
 test('delete request fail test', async (done) =>{
-    customerService.delete.mockImplementation(() => Promise.reject());
+    // customerService.delete.mockImplementation(() => Promise.reject());
     request(app)
         .delete('/customer/1')
         .then(()=>{

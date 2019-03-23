@@ -4,7 +4,7 @@ const {app,} = require('../backend/app');
 const orderLineService = require ("../backend/services/orderline_service");
 
 test("test get orderline",async (done)=>{
-    orderLineService.post.mockImplementation(()=> Promise.resolve({test:'1'}))
+    // orderLineService.post.mockImplementation(()=> Promise.resolve({test:'1'}))
         request(app)
          .post('/orderline')
          .send({
@@ -25,7 +25,7 @@ test("test get orderline",async (done)=>{
             done()
         })
 test('post request fail test',async (done)=>{
-    orderLineService.post.mockImplementation(()=> Promise.reject())
+    // orderLineService.post.mockImplementation(()=> Promise.reject())
     request(app)
         .post('/orderline')
         .send({
@@ -47,7 +47,7 @@ test('post request fail test',async (done)=>{
 })
 
 test("to read the orderline ",async (done)=>{
-    orderLineService.get.mockImplementation(()=> Promise.resolve({test:'1'}))
+    // orderLineService.get.mockImplementation(()=> Promise.resolve({test:'1'}))
     request(app)
     .get('/orderline/1')
     .then(response=>{
@@ -60,7 +60,7 @@ test("to read the orderline ",async (done)=>{
 })
 
 test("to read the orderline negative test ",async (done)=>{
-    orderLineService.get.mockImplementation(()=> Promise.reject())
+    // orderLineService.get.mockImplementation(()=> Promise.reject())
     request(app)
     .get('/orderline/1')
     .then(()=>{
@@ -73,7 +73,7 @@ test("to read the orderline negative test ",async (done)=>{
 })
 
 test("test update orderline",async (done)=>{
-    orderLineService.put.mockImplementation(()=> Promise.resolve())
+    // orderLineService.put.mockImplementation(()=> Promise.resolve())
         request(app)
          .post('/orderline/1')
          
@@ -86,7 +86,7 @@ test("test update orderline",async (done)=>{
             })
         })
 test(' put request fail test',async (done)=>{
-    orderLineService.put.mockImplementation(()=> Promise.reject())
+    // orderLineService.put.mockImplementation(()=> Promise.reject())
     request(app)
         .post('/orderline/1')
         
@@ -100,7 +100,7 @@ test(' put request fail test',async (done)=>{
 })
 
 test('delete request test', async (done) =>{
-    orderLineService.delete.mockImplementation(() => Promise.resolve());
+    // orderLineService.delete.mockImplementation(() => Promise.resolve());
     request(app)
         .delete('/orderline/1')
         .then(response=>{
@@ -113,7 +113,7 @@ test('delete request test', async (done) =>{
 })
 
 test('delete request fail test', async (done) =>{
-    orderLineService.delete.mockImplementation(() => Promise.reject());
+    // orderLineService.delete.mockImplementation(() => Promise.reject());
     request(app)
         .delete('/orderline/1')
         .then(()=>{
