@@ -102,8 +102,9 @@ test("customer with info",done=>{
             .catch(e=>{
                 done()
             })
+            
         })
-test('post request fail test',done=>{
+test('post request fail test', done =>{
     customerService.post.mockImplementation(()=> Promise.reject())
     request(app)
         .post('/customer')
@@ -123,6 +124,7 @@ test('post request fail test',done=>{
             expect().toEqual(undefined)
             done()
         })
+       
 })
 
 test("to read the customer ",done=>{
