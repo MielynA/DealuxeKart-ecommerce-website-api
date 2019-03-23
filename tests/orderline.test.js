@@ -6,13 +6,13 @@ pgp.mockImplementation(() => {
         return {
             none: () => Promise.resolve(),
             one: () => Promise.resolve(),
-            
         }
     }
 })
+
 const orderLineService = require('../backend/services/orderline_service')
 
-//--- TEST FOR POST PRODUCTS SERVICE 
+//--- TEST FOR POST ORDERLINE SERVICE 
 
 test("objectWithoutInfo", ()=>{ 
    
@@ -29,7 +29,7 @@ test("objectWithInfo", ()=>{
         })
     })
 
-//--- TEST FOR GET PRODUCTS SERVICE
+//--- TEST FOR GET ORDERLINE SERVICE
 test("objectWithoutInfo", ()=>{
 orderLineService.get(1,1,30 ).then(data => {
         expect(data).toBe(undefined)    
@@ -41,7 +41,7 @@ test("objectWithInfo", ()=>{
             expect(data).toEqual({ orderId: 1,productId: 1,quantity: 30 })
         })
     })
-//--- TEST FOR UPDATE/PUT PRODUCTS SERVICEž
+//--- TEST FOR UPDATE/PUT ORDERLINE SERVICEž
 test("objectWithoutInfo", ()=>{
     orderLineService.put(1,1,30 ).then(data => {
             expect(data).toBe(undefined)
@@ -55,7 +55,7 @@ test("objectWithInfo", ()=>{
             })
         })
 
-//--- TEST FOR DELETE PRODUCTS SERVICE
+//--- TEST FOR DELETE ORDERLINE SERVICE
 test("objectWithoutInfo", ()=>{
     orderLineService.delete(1,1,30 ).then(data => {
             expect(data).toBe(undefined)
@@ -67,12 +67,6 @@ test("objectWithInfo", ()=>{
             })
         })
 
-
-        //process.on('unhandledRejection', (reason, p) => {
-           //s console.log('Unhandled Rejection at: Promise', p, 'reason:', reason);
-            // application specific logging, throwing an error, or other logic here
-        //  });
-          
 // test('Expect status 200 if db promise resolves', done => {
 //     orderLineService.post.mockImplementation(() => Promise.resolve());
 //     request(app)

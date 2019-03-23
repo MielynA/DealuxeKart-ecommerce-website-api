@@ -1,29 +1,29 @@
+
 jest.mock("pg-promise");
 const pgp = require("pg-promise");
 
 pgp.mockImplementation(() => {
     return function() {
         return {
-            none: () => Promise.resolve({'test':1}),
+            none: () => Promise.resolve(),
             one: () => Promise.resolve(),
         }
     } 
 })
-
-const productService = require ("../backend/services/products_services");
+const supplierService = require ("../backend/services/supplier_services");
 
 //--- TEST FOR POST PRODUCTS SERVICE 
 
 test("objectWithoutInfo", ()=>{ 
   
-productService.post(1,"Charles and Keith","Handbag" ,70,"white",80,"Handbag","test","{test}").then(data => {
+supplierService.post(1,"mie","admi123" ,"heyho",123455,"mie@email.com","queens","phil","2019-01-01", "2019-01-01","{test}").then(data => {
         expect(data).toBe(undefined)
     })
 })
 
 
 test("objectWithInfo", ()=>{
-    productService.post(1,"Charles and Keith","Handbag" ,70,"white",80,"Handbag","test","{test}" ).then(data => {
+    supplierService.post(1,"mie","admi123" ,"heyho",123455,"mie@email.com","queens","phil","2019-01-01", "2019-01-01","{test}" ).then(data => {
            // expect(data).toBe(data)
             expect(data).toEqual({supplierId : 1, productName :"Charles and Keith",productDesc : "Handbag" ,unitPrice: 70,color: "white",quantityPerUnit : 80,categoryName: "Handbag",categoryDesc: "test",imgurl: "{test}" })
         })
@@ -31,38 +31,39 @@ test("objectWithInfo", ()=>{
 
 //--- TEST FOR GET PRODUCTS SERVICE
 test("objectWithoutInfo", ()=>{
-productService.get(1,"Charles and Keith","Handbag" ,70,"white",80,"Handbag","test","{test}" ).then(data => {
+supplierService.get(1,"mie","admi123" ,"heyho",123455,"mie@email.com","queens","phil","2019-01-01", "2019-01-01","{test}" ).then(data => {
         expect(data).toBe(undefined)    
     })
 })
 
 test("objectWithInfo", ()=>{
-    productService.get(1,"Charles and Keith","Handbag" ,70,"white",80,"Handbag","test","{test}" ).then(data => {
+    supplierService.get(1,"mie","admi123" ,"heyho",123455,"mie@email.com","queens","phil","2019-01-01", "2019-01-01","{test}" ).then(data => {
             expect(data).toEqual({supplierId : 1, productName :"Charles and Keith",productDesc : "Handbag" ,unitPrice: 70,color: "white",quantityPerUnit : 80,categoryName: "Handbag",categoryDesc: "test",imgurl: "{test}"  })
         })
     })
 //--- TEST FOR UPDATE/PUT PRODUCTS SERVICEž
 test("objectWithoutInfo", ()=>{
-    productService.put(1,"Charles and Keith","Handbag" ,70,"white",80,"Handbag","test","{test}" ).then(data => {
+    supplierService.put(1,"mie","admi123" ,"heyho",123455,"mie@email.com","queens","phil","2019-01-01", "2019-01-01","{test}" ).then(data => {
             expect(data).toBe(undefined)
         })
     })
     
 test("objectWithInfo", ()=>{
 
-    productService.put(1,"Charles and Keith","Handbag" ,70,"white",80,"Handbag","test","{test}" ).then(data => {
+    supplierService.put(1,"mie","admi123" ,"heyho",123455,"mie@email.com","queens","phil","2019-01-01", "2019-01-01","{test}" ).then(data => {
                 expect(data).toEqual({supplierId : 1, productName :"Charles and Keith",productDesc : "Handbag" ,unitPrice: 70,color: "white",quantityPerUnit : 80,categoryName: "Handbag",categoryDesc: "test",imgurl: "{test}"   })
             })
         })
 
 //--- TEST FOR DELETE PRODUCTS SERVICE
 test("objectWithoutInfo", ()=>{
-    productService.delete(1,"Charles and Keith","Handbag" ,70,"white",80,"Handbag","test","{test}" ).then(data => {
+    supplierService.delete(1,"mie","admi123" ,"heyho",123455,"mie@email.com","queens","phil","2019-01-01", "2019-01-01","{test}" ).then(data => {
             expect(data).toBe(undefined)
         })
     })
 test("objectWithInfo", ()=>{
-        productService.delete(1,"Charles and Keith","Handbag" ,70,"white",80,"Handbag","test","{test}" ).then(data => {
+        supplierService.delete(1,"mie","admi123" ,"heyho",123455,"mie@email.com","queens","phil","2019-01-01", "2019-01-01","{test}" ).then(data => {
                 expect(data).toEqual({supplierId : 1, productName :"Charles and Keith",productDesc : "Handbag" ,unitPrice: 70,color: "white",quantityPerUnit : 80,categoryName: "Handbag",categoryDesc: "test",imgurl: "{test}"   })
             })
         })
+

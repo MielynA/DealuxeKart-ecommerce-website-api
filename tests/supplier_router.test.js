@@ -1,100 +1,194 @@
-jest.mock("pg-promise");
-const pgp = require("pg-promise");
+const request = require('supertest');
+jest.mock('../backend/services/supplier_services')
+const {app,} = require('../backend/app');
+//jest.mock("pg-promise");
+//const pgp = require("../backend/db/database");
 
-pgp.mockImplementation(() => {
-    return function() {
-        return {
-            none: () => Promise.resolve(),
-            one: () => Promise.resolve(),
-        }
-    } 
-})
+// pgp.mockImplementation(() => {
+//     return function() {
+//         return {
+//             none: () => Promise.resolve(),
+//             one: () => Promise.resolve(),
+//         }
+//     } 
+// })
 
 const supplierService = require ("../backend/services/supplier_services");
 
-//--- TEST FOR POST PRODUCTS SERVICE 
+// //--- TEST FOR POST PRODUCTS SERVICE 
 
-test("objectWithoutInfo", ()=>{ 
+// test("objectWithoutInfo", ()=>{ 
   
-supplierService.post(1,"mie","admi123" ,"heyho",123455,"mie@email.com","queens","phil","2019-01-01", "2019-01-01","{test}").then(data => {
-        expect(data).toBe(undefined)
-    })
-})
+// supplierService.post(1,"mie","admi123" ,"heyho",123455,"mie@email.com","queens","phil","2019-01-01", "2019-01-01","{test}").then(data => {
+//         expect(data).toBe(undefined)
+//     })
+// })
 
 
-test("objectWithInfo", ()=>{
-    supplierService.post(1,"mie","admi123" ,"heyho",123455,"mie@email.com","queens","phil","2019-01-01", "2019-01-01","{test}" ).then(data => {
-           // expect(data).toBe(data)
-            expect(data).toEqual({supplierId : 1, productName :"Charles and Keith",productDesc : "Handbag" ,unitPrice: 70,color: "white",quantityPerUnit : 80,categoryName: "Handbag",categoryDesc: "test",imgurl: "{test}" })
-        })
-    })
+// test("objectWithInfo", ()=>{
+//     supplierService.post(1,"mie","admi123" ,"heyho",123455,"mie@email.com","queens","phil","2019-01-01", "2019-01-01","{test}" ).then(data => {
+//            // expect(data).toBe(data)
+//             expect(data).toEqual({supplierId : 1, productName :"Charles and Keith",productDesc : "Handbag" ,unitPrice: 70,color: "white",quantityPerUnit : 80,categoryName: "Handbag",categoryDesc: "test",imgurl: "{test}" })
+//         })
+//     })
 
-//--- TEST FOR GET PRODUCTS SERVICE
-test("objectWithoutInfo", ()=>{
-supplierService.get(1,"mie","admi123" ,"heyho",123455,"mie@email.com","queens","phil","2019-01-01", "2019-01-01","{test}" ).then(data => {
-        expect(data).toBe(undefined)    
-    })
-})
+// //--- TEST FOR GET PRODUCTS SERVICE
+// test("objectWithoutInfo", ()=>{
+// supplierService.get(1,"mie","admi123" ,"heyho",123455,"mie@email.com","queens","phil","2019-01-01", "2019-01-01","{test}" ).then(data => {
+//         expect(data).toBe(undefined)    
+//     })
+// })
 
-test("objectWithInfo", ()=>{
-    supplierService.get(1,"mie","admi123" ,"heyho",123455,"mie@email.com","queens","phil","2019-01-01", "2019-01-01","{test}" ).then(data => {
-            expect(data).toEqual({supplierId : 1, productName :"Charles and Keith",productDesc : "Handbag" ,unitPrice: 70,color: "white",quantityPerUnit : 80,categoryName: "Handbag",categoryDesc: "test",imgurl: "{test}"  })
-        })
-    })
-//--- TEST FOR UPDATE/PUT PRODUCTS SERVICEž
-test("objectWithoutInfo", ()=>{
-    supplierService.put(1,"mie","admi123" ,"heyho",123455,"mie@email.com","queens","phil","2019-01-01", "2019-01-01","{test}" ).then(data => {
-            expect(data).toBe(undefined)
-        })
-    })
+// test("objectWithInfo", ()=>{
+//     supplierService.get(1,"mie","admi123" ,"heyho",123455,"mie@email.com","queens","phil","2019-01-01", "2019-01-01","{test}" ).then(data => {
+//             expect(data).toEqual({supplierId : 1, productName :"Charles and Keith",productDesc : "Handbag" ,unitPrice: 70,color: "white",quantityPerUnit : 80,categoryName: "Handbag",categoryDesc: "test",imgurl: "{test}"  })
+//         })
+//     })
+// //--- TEST FOR UPDATE/PUT PRODUCTS SERVICEž
+// test("objectWithoutInfo", ()=>{
+//     supplierService.put(1,"mie","admi123" ,"heyho",123455,"mie@email.com","queens","phil","2019-01-01", "2019-01-01","{test}" ).then(data => {
+//             expect(data).toBe(undefined)
+//         })
+//     })
     
-test("objectWithInfo", ()=>{
+// test("objectWithInfo", ()=>{
 
-    supplierService.put(1,"mie","admi123" ,"heyho",123455,"mie@email.com","queens","phil","2019-01-01", "2019-01-01","{test}" ).then(data => {
-                expect(data).toEqual({supplierId : 1, productName :"Charles and Keith",productDesc : "Handbag" ,unitPrice: 70,color: "white",quantityPerUnit : 80,categoryName: "Handbag",categoryDesc: "test",imgurl: "{test}"   })
+//     supplierService.put(1,"mie","admi123" ,"heyho",123455,"mie@email.com","queens","phil","2019-01-01", "2019-01-01","{test}" ).then(data => {
+//                 expect(data).toEqual({supplierId : 1, productName :"Charles and Keith",productDesc : "Handbag" ,unitPrice: 70,color: "white",quantityPerUnit : 80,categoryName: "Handbag",categoryDesc: "test",imgurl: "{test}"   })
+//             })
+//         })
+
+// //--- TEST FOR DELETE PRODUCTS SERVICE
+// test("objectWithoutInfo", ()=>{
+//     supplierService.delete(1,"mie","admi123" ,"heyho",123455,"mie@email.com","queens","phil","2019-01-01", "2019-01-01","{test}" ).then(data => {
+//             expect(data).toBe(undefined)
+//         })
+//     })
+// test("objectWithInfo", ()=>{
+//         supplierService.delete(1,"mie","admi123" ,"heyho",123455,"mie@email.com","queens","phil","2019-01-01", "2019-01-01","{test}" ).then(data => {
+//                 expect(data).toEqual({supplierId : 1, productName :"Charles and Keith",productDesc : "Handbag" ,unitPrice: 70,color: "white",quantityPerUnit : 80,categoryName: "Handbag",categoryDesc: "test",imgurl: "{test}"   })
+//             })
+//         })
+
+
+test("post create for supplier",done=>{
+    supplierService.post.mockImplementation(()=> Promise.resolve({test:'1'}))
+        request(app)
+         .post('/customer')
+         .send({
+            "userName" : "Mie", 
+            "userPassword" : "10383", 
+            "email" : "lara@email.com", 
+            "billingAdd" : "Brooklyn", 
+            "city": "NYC", 
+            "state": "NYC", 
+            "creditCard": "01010",
+         })
+         .then(response=>{
+          expect(response).toEqual({test:'1'})
+            done()
+            })
+            .catch(e=>{
+                done()
             })
         })
-
-//--- TEST FOR DELETE PRODUCTS SERVICE
-test("objectWithoutInfo", ()=>{
-    supplierService.delete(1,"mie","admi123" ,"heyho",123455,"mie@email.com","queens","phil","2019-01-01", "2019-01-01","{test}" ).then(data => {
-            expect(data).toBe(undefined)
+test('post request fail test',done=>{
+    supplierService.post.mockImplementation(()=> Promise.reject())
+    request(app)
+        .post('/customer')
+        .send({
+            "userName" : "Mie", 
+            "userPassword" : "10383", 
+            "email" : "lara@email.com", 
+            "billingAdd" : "Brooklyn", 
+            "city": "NYC", 
+            "state": "NYC", 
+            "creditCard": "01010",
         })
+        .then(()=>{
+            done();
+        })
+        .catch(e=>{
+            expect().toEqual(undefined)
+            done()
+        })
+})
+
+test("to read the customer ",done=>{
+    supplierService.get.mockImplementation(()=> Promise.resolve({test:'1'}))
+    request(app)
+    .get('/customer/1')
+    .then(response=>{
+        expect(response).toEqual({test:'1'})
+        done()
     })
-test("objectWithInfo", ()=>{
-        supplierService.delete(1,"mie","admi123" ,"heyho",123455,"mie@email.com","queens","phil","2019-01-01", "2019-01-01","{test}" ).then(data => {
-                expect(data).toEqual({supplierId : 1, productName :"Charles and Keith",productDesc : "Handbag" ,unitPrice: 70,color: "white",quantityPerUnit : 80,categoryName: "Handbag",categoryDesc: "test",imgurl: "{test}"   })
+    .catch(e=>{
+        done()
+    })
+})
+
+test("to read the customer negative test ",done=>{
+    supplierService.get.mockImplementation(()=> Promise.reject())
+    request(app)
+    .get('/customer/1')
+    .then(()=>{
+        done()
+    })
+    .catch(e=>{
+        expect().toBe(undefined)
+        done()
+    })
+})
+
+test("test update customer",done=>{
+    supplierService.put.mockImplementation(()=> Promise.resolve())
+        request(app)
+         .post('/customer/1')
+         
+         .then(response=>{
+          expect(response).toBe(undefined)
+            done()
+            })
+            .catch(e=>{
+                done()
             })
         })
+test(' put request fail test',done=>{
+    supplierService.put.mockImplementation(()=> Promise.reject())
+    request(app)
+        .post('/customer/1')
+        
+        .then(()=>{
+            done();
+        })
+        .catch(e=>{
+            expect().toBe(undefined)
+            done()
+        })
+})
 
+test('delete request test', done =>{
+    supplierService.delete.mockImplementation(() => Promise.resolve());
+    request(app)
+        .delete('/customer/1')
+        .then(response=>{
+            expect(response).toBe(undefined)
+            done();
+        })
+        .catch(e => {
+          done();
+        })
+})
 
-        //process.on('unhandledRejection', (reason, p) => {
-           //s console.log('Unhandled Rejection at: Promise', p, 'reason:', reason);
-            // application specific logging, throwing an error, or other logic here
-        //  });
-          
-// test('Expect status 200 if db promise resolves', done => {
-//     supplierService.post.mockImplementation(() => Promise.resolve());
-//     request(app)
-//         .post('/supplier')
-//         .send({
-//             'customerId': 1, 
-//             'username': 'ley',
-//             'supplierPassword': 'admin123', 
-//             'shopName': 'crew', 
-//             'phone': 1259595, 
-//             'email': 'ley@email.com', 
-//             'address': 'phil', 
-//             'country': 'phil', 
-//             'createdAt': '2019-01-01', 
-//             'updatedAt': '2019-01-01',
-//             'imgurl': '{test}'
-//         })
-//         .then(res => {
-//             expect(res.status).toBe(200);
-//             done();
-//         })
-//         .catch(res => {
-//             done();
-//         });
-// });
+test('delete request fail test', done =>{
+    supplierService.delete.mockImplementation(() => Promise.reject());
+    request(app)
+        .delete('/customer/1')
+        .then(()=>{
+            done();
+        })
+        .catch(e => {
+            expect().toBe(undefined)
+            done();
+        })
+})
