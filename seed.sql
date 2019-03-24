@@ -1,8 +1,11 @@
 ﻿
+<<<<<<< HEAD
 DROP DATABASE IF EXISTS dealuxekart;
 CREATE DATABASE dealuxekart; 
 
 \c dealuxekart;
+=======
+>>>>>>> master
 
 
 CREATE TABLE Customer (
