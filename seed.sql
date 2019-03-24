@@ -1,7 +1,4 @@
-﻿DROP DATABASE IF EXISTS DealuxeKart;
-CREATE DATABASE DealuxeKart; 
-
-\c DealuxeKart;
+﻿
 
 
 CREATE TABLE Customer (
@@ -69,8 +66,8 @@ CREATE TABLE OrderLine (
 );
 
 
-INSERT INTO Customer (username, password, email, billingAdd, city, state, creditCard, createdAt, updatedAt) VALUES
-('Mie', 'admin123', 'mie@email.com', 'queens', 'nyc', 'nyc' , 12945, '2019-01-01', '2019-01-01');
+--INSERT INTO Customer (username, password, email, billingAdd, city, state, creditCard, createdAt, updatedAt) VALUES
+--('Mie', 'admin123', 'mie@email.com', 'queens', 'nyc', 'nyc' , 12945, '2019-01-01', '2019-01-01');
 
 
 -- INSERT INTO Products (supplierId, productName, productDesc, unitPrice, color, quantityPerUnit,categoryName, categoryDesc) VALUES
