@@ -11,7 +11,7 @@ app.post('/', (req,res)=>{
         res.json({msg: 'created!'})
         })
         .catch(err=>{
-            res.status(404).json({error: err.toString('utf-8')})
+            res.status(404).json({error: err})
         })
 })
 
@@ -26,7 +26,7 @@ app.get('/:supplier_id', (req, res)=>{
         
     })
     .catch(err=>{
-        res.status(404).json({error: err.toString('utf-8')})
+        res.status(404).json({error: err})
     })
 })
 
@@ -38,7 +38,7 @@ app.put('/:cust_id', (req,res)=>{
             res.json({msg: `SUPPLIER ${supplier_id} is udpated!`})
         })
         .catch(err=>{
-            res.status(404).json({error: err.toString('utf-8')})
+            res.status(404).json({error: err})
         })
 
 })
@@ -53,7 +53,7 @@ app.delete('/:supplier_id', (req,res)=>{
         })
 
     .catch(err=>{   
-        res.status(404).json({error: err.toString('utf-8')})
+        res.status(404).json({error: err})
     })
 })
 module.exports = {supplierRoutes: app, } 

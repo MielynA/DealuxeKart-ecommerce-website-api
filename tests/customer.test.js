@@ -80,8 +80,8 @@ const customerService = require ('../backend/services/customer_services');
 //             })
 //         })
 
-test("customer with info",done=>{
-    customerService.post.mockImplementation(()=> Promise.resolve({test:'1'}))
+test("customer with info",async (done)=>{
+     customerService.post.mockImplementation(()=> Promise.resolve({test:'1'}))
         request(app)
          .post('/customer')
          .send({
@@ -103,8 +103,8 @@ test("customer with info",done=>{
                 done()
             })
         })
-test('post request fail test',done=>{
-    customerService.post.mockImplementation(()=> Promise.reject())
+test('post request fail test',async (done)=>{
+    // customerService.post.mockImplementation(()=> Promise.reject())
     request(app)
         .post('/customer')
         .send({
@@ -125,8 +125,8 @@ test('post request fail test',done=>{
         })
 })
 
-test("to read the customer ",done=>{
-    customerService.get.mockImplementation(()=> Promise.resolve({test:'1'}))
+test("to read the customer ",async (done)=>{
+    // customerService.get.mockImplementation(()=> Promise.resolve({test:'1'}))
     request(app)
     .get('/customer/1')
     .then(response=>{
@@ -138,8 +138,8 @@ test("to read the customer ",done=>{
     })
 })
 
-test("to read the customer negative test ",done=>{
-    customerService.get.mockImplementation(()=> Promise.reject())
+test("to read the customer negative test ",async (done)=>{
+    // customerService.get.mockImplementation(()=> Promise.reject())
     request(app)
     .get('/customer/1')
     .then(()=>{
@@ -151,8 +151,8 @@ test("to read the customer negative test ",done=>{
     })
 })
 
-test("test update customer",done=>{
-    customerService.put.mockImplementation(()=> Promise.resolve())
+test("test update customer",async (done)=>{
+    // customerService.put.mockImplementation(()=> Promise.resolve())
         request(app)
          .post('/customer/1')
          
@@ -164,8 +164,8 @@ test("test update customer",done=>{
                 done()
             })
         })
-test(' put request fail test',done=>{
-    customerService.put.mockImplementation(()=> Promise.reject())
+test(' put request fail test',async (done)=>{
+    // customerService.put.mockImplementation(()=> Promise.reject())
     request(app)
         .post('/customer/1')
         
@@ -178,8 +178,8 @@ test(' put request fail test',done=>{
         })
 })
 
-test('delete request test', done =>{
-    customerService.delete.mockImplementation(() => Promise.resolve());
+test('delete request test', async (done) =>{
+    // customerService.delete.mockImplementation(() => Promise.resolve());
     request(app)
         .delete('/customer/1')
         .then(response=>{
@@ -191,8 +191,8 @@ test('delete request test', done =>{
         })
 })
 
-test('delete request fail test', done =>{
-    customerService.delete.mockImplementation(() => Promise.reject());
+test('delete request fail test', async (done) =>{
+    // customerService.delete.mockImplementation(() => Promise.reject());
     request(app)
         .delete('/customer/1')
         .then(()=>{
