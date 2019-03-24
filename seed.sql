@@ -1,5 +1,8 @@
-﻿
 
+DROP DATABASE IF EXISTS dealuxekart;
+CREATE DATABASE dealuxekart; 
+
+\c dealuxekart;
 
 CREATE TABLE Customer (
     customerId SERIAL PRIMARY KEY, 
