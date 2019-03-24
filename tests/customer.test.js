@@ -5,6 +5,7 @@ const {app,} = require('../backend/app');
 
 const customerService = require ('../backend/services/customer_services');
 
+
 test("customer with info",async (done)=>{
      customerService.post.mockImplementation(()=> Promise.resolve({test:'1'}))
         request(app)
