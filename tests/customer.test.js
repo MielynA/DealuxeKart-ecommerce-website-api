@@ -22,7 +22,7 @@ test("customer with info",async (done)=>{
             "updatedAt" : "2019-01-01",
          })
          .then(response=>{
-          expect(response).toEqual({test:'1'})
+          expect\(response).toEqual({test:'1'})
             done()
             })
             .catch(e=>{
@@ -129,3 +129,5 @@ test('delete request fail test', async (done) =>{
             done();
         })
 })
+
+
