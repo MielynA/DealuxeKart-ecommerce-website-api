@@ -81,7 +81,7 @@ const customerService = require ('../backend/services/customer_services');
 //         })
 
 test("customer with info",async (done)=>{
-    // customerService.post.mockImplementation(()=> Promise.resolve({test:'1'}))
+     customerService.post.mockImplementation(()=> Promise.resolve({test:'1'}))
         request(app)
          .post('/customer')
          .send({

@@ -37,7 +37,8 @@
       "!**/__fixtures__/**",
       "!**/coverage/**",
       "!index.js",
-      "!**/routes/**"
+      "!**/routes/**",
+      "!**/services/**"
     ]
   },
   "directories": {

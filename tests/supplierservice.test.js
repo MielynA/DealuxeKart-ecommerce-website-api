@@ -4,7 +4,7 @@ const {app,} = require('../backend/app');
 const supplierService = require ("../backend/services/supplier_services");
 
 test("test get supplier",async (done)=>{
-    // supplierService.post.mockImplementation(()=> Promise.resolve({test:'1'}))
+     supplierService.post.mockImplementation(()=> Promise.resolve({test:'1'}))
         request(app)
          .post('/supplier')
          .send({
