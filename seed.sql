@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 ﻿
 <<<<<<< HEAD
 DROP DATABASE IF EXISTS dealuxekart;
@@ -86,6 +87,8 @@ CREATE TABLE OrderLine (
 
 =======
 
+=======
+>>>>>>> master
 DROP DATABASE IF EXISTS dealuxekart;
 CREATE DATABASE dealuxekart; 
 
@@ -165,5 +168,9 @@ CREATE TABLE OrderLine (
 
 -- INSERT INTO Suppliers (customerId, fName, LName, password, shopName, phone, email, address, city, state, country) VALUES (3, 'amanda', 'acosta', 'admin123', 'amandashop', 19393, 'amanda.com', 'queens', 'nyc','nyc', 'USA');
 
+
+<<<<<<< HEAD
+>>>>>>> master
+=======
 
 >>>>>>> master
