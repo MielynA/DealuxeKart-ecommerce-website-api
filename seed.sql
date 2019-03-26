@@ -1,4 +1,3 @@
-
 DROP DATABASE IF EXISTS dealuxekart;
 CREATE DATABASE dealuxekart; 
 
@@ -77,5 +76,6 @@ CREATE TABLE OrderLine (
 -- (3, 'Sakroots', 'Ladies HandBag', 30, 'red', 30, 'HandBag', 'handbag leather'), (2, 'ToteBag', 'tote bag ', 30, 'white', 30, 'Handbag', 'handbag leather');
 
 -- INSERT INTO Suppliers (customerId, fName, LName, password, shopName, phone, email, address, city, state, country) VALUES (3, 'amanda', 'acosta', 'admin123', 'amandashop', 19393, 'amanda.com', 'queens', 'nyc','nyc', 'USA');
+
 
 
