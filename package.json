@@ -39,7 +39,8 @@
       "!**/__fixtures__/**",
       "!**/coverage/**",
       "!index.js",
-      "!**/routes/**"
+      "!**/routes/**",
+      "!./backend/services/firebase_auth.js"
     ]
   },
   "directories": {
