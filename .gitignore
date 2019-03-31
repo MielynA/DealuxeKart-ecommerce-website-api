@@ -3,4 +3,4 @@ package-lock.json
 .coveralls.yml
 coverage/*
 node_modules/*
-/firebase_key.json
+# /firebase_key.json
