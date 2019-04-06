@@ -64,18 +64,18 @@ test("to read the customer ",async (done)=>{
     })
 })
 
-// test("to read the customer negative test ",async (done)=>{
-//      customerService.get.mockImplementation(()=> Promise.reject())
-//     request(app)
-//     .get('/customer/1')
-//     .then(()=>{
-//         done()
-//     })
-//     .catch(e=>{
-//         expect().toBe(undefined)
-//         done()
-//     })
-// })
+test("to read the customer negative test ",async (done)=>{
+    customerService.get.mockImplementation(()=> Promise.reject(new Error()))
+    request(app)
+    .get('/customer/1')
+    .then(()=>{
+        done()
+    })
+    .catch(e=>{
+        expect(e).toEqual(new Error())
+        done()
+    })
+})
 
 test("test update customer",async (done)=>{
     customerService.put.mockImplementation(()=> Promise.resolve())

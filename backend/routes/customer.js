@@ -14,10 +14,9 @@ app.get('/:cust_id', (req, res)=>{
         res.json({msg: newCust})
         
     })
-    // .catch(err=>{
-    //     res.status(404).json({error: err.toString()})
-    // })
+    .catch(err=>{
+        res.status(404).json({error: err.toString()})
+    })
 })
-
 
 module.exports = {customerRoutes: app, } 
