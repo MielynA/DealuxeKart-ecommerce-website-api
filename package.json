@@ -16,13 +16,12 @@
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "firebase-admin": "^7.1.1",
-    "pg-promise": "^8.6.3"
+    "pg-promise": "^8.6.3",
+    "supertest": "^4.0.0"
   },
   "devDependencies": {
     "coveralls": "^3.0.3",
-    "jest": "^24.5.0",
-    "nodemon": "^1.18.10",
-    "supertest": "^4.0.2"
+    "jest": "^24.3.1"
   },
   "jest": {
     "collectCoverage": true,
@@ -41,7 +40,7 @@
       "!**/coverage/**",
       "!index.js",
       "!**/routes/**",
-      "!**/firebase_auth.js/**"
+      "!./backend/services/firebase_auth.js"
     ]
   },
   "directories": {

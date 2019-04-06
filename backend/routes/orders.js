@@ -50,4 +50,14 @@ app.delete('/:order_id', (req,res)=>{
         res.status(404).json({error: err})
     })
 })
+
+//--- GET ALL THE ORDERS
+app.get('/', (req,res)=>{
+    orderService.getAll().then((data)=>{
+        res.json({msg: 'Here are the list of all orders', data})
+    })
+    .catch(err=>{
+        res.status(404).json({error: err.toString('utf-8')})
+    })
+})
 module.exports = {orderRoutes: app, } 

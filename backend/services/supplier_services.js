@@ -21,6 +21,9 @@ supplierService.delete = (supplierId) => {
     return db.none('DELETE FROM Suppliers WHERE supplierId = ${supplierId}', {supplierId})
 }
 
+supplierService.getAll = () => {
+    return db.any('SELECT * FROM Suppliers')
+}
 
 
 module.exports = supplierService;

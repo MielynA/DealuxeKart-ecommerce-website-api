@@ -15,6 +15,16 @@ app.post('/', (req,res)=>{
         })
 })
 
+//--- GET ALL THE SUPPLIERS
+app.get('/', (req,res)=>{
+    supplierService.getAll().then((data)=>{
+        res.json({msg: 'Here are the list of all suppliers', data})
+    })
+    .catch(err=>{
+        res.status(404).json({error: err.toString('utf-8')})
+    })
+})
+
 //--- READ/GET SUPPLIER INFO
 app.get('/:supplier_id', (req, res)=>{
     const {supplier_id} = req.params; 
@@ -56,4 +66,5 @@ app.delete('/:supplier_id', (req,res)=>{
         res.status(404).json({error: err})
     })
 })
+
 module.exports = {supplierRoutes: app, } 

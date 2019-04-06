@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
 
-app.use('/', customerRoutes);
+app.use('/customer', customerRoutes);
 app.use('/supplier', supplierRoutes);
 app.use('/product', productRoutes);
 app.use('/orders', orderRoutes);
