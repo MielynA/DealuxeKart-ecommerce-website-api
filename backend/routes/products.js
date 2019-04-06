@@ -55,4 +55,14 @@ app.delete('/:product_id', (req,res)=>{
         res.status(404).json({error: err.toString('utf-8')})
     })
 })
+
+//--- GET ALL THE PRODUCTS 
+app.get('/', (req,res)=>{
+    productsService.getAll().then((data)=>{
+        res.json({msg: 'Here are the list of all the products', data})
+    })
+    .catch(err=>{
+        res.status(404).json({error: err.toString('utf-8')})
+    })
+})
 module.exports = {productRoutes: app, } 

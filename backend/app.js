@@ -1,7 +1,7 @@
 //--- NPM PACKAGES MODULES 
 const app = require('express')();
 const bodyParser = require('body-parser');
-//const cors = require('cors');
+const cors = require('cors');
 //const checkFirebaseToken = require('../backend/firebase')
 
 const checkFirebaseToken = require('../backend/services/firebase_auth');
@@ -17,19 +17,20 @@ const {orderRoutes} = require('../backend/routes/orders');
 const {orderLineRoutes} = require('../backend/routes/orderline');
 
 //--- MIDDLEWARE 
-//app.use(cors());
+app.use(cors());
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended:false}));
 //parse application/json
 app.use(bodyParser.json());
 
 
-app.use('/', customerRoutes);
+app.use('/customer', customerRoutes);
 app.use('/supplier', supplierRoutes);
 app.use('/product', productRoutes);
 app.use('/orders', orderRoutes);
 app.use('/orderline', orderLineRoutes)
-
 PrivateCustomerRoutes.use(checkFirebaseToken);
+app.use('/privatecustomer',PrivateCustomerRoutes)
+
 
 module.exports = {app, }

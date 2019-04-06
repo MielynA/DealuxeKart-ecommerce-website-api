@@ -15,9 +15,8 @@ app.get('/:cust_id', (req, res)=>{
         
     })
     .catch(err=>{
-        res.status(404).json({error: err.toString('utf-8')})
+        res.status(404).json({error: err.toString()})
     })
 })
-
 
 module.exports = {customerRoutes: app, } 

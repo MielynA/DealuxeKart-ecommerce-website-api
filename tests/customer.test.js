@@ -65,14 +65,14 @@ test("to read the customer ",async (done)=>{
 })
 
 test("to read the customer negative test ",async (done)=>{
-     customerService.get.mockImplementation(()=> Promise.reject())
+    customerService.get.mockImplementation(()=> Promise.reject(new Error()))
     request(app)
     .get('/customer/1')
     .then(()=>{
         done()
     })
     .catch(e=>{
-        expect().toBe(undefined)
+        expect(e).toEqual(new Error())
         done()
     })
 })

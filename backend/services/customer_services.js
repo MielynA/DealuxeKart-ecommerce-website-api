@@ -20,6 +20,8 @@ customerService.delete = (customerId) => {
     return db.none('DELETE FROM Customer WHERE customerId = ${customerId}', {customerId})
 }
 
-
+customerService.getAll = () => {
+    return db.any('SELECT * FROM Customer')
+}
 
 module.exports = customerService;

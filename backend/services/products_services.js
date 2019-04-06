@@ -21,6 +21,8 @@ productService.delete = (productId) => {
     return db.none('DELETE FROM Products WHERE productId = ${productId}', {productId})
 }
 
-
+productService.getAll = () => {
+    return db.any('SELECT * FROM Products')
+}
 
 module.exports = productService;

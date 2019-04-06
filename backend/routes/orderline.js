@@ -50,4 +50,15 @@ app.delete('/:orderline_id', (req,res)=>{
         res.status(404).json({error: err.toString('utf-8')})
     })
 })
+
+//--- GET ALL ORDERLINE
+app.get('/', (req,res)=>{
+    orderLineService.getAll().then((data)=>{
+        res.json({msg: 'Here are the list of all orders are in line', data})
+    })
+    .catch(err=>{
+        res.status(404).json({error: err.toString('utf-8')})
+    })
+})
+
 module.exports = {orderLineRoutes: app, } 

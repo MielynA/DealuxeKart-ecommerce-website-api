@@ -20,5 +20,11 @@ orderLineService.delete = (orderId) => {
     return db.none('DELETE FROM OrderLine WHERE orderId = ${orderId}', {orderId})
 }
 
+orderLineService.get = () => {
+    return db.any('SELECT * FROM OrderLine')
+}
+
+
+
 
 module.exports = orderLineService;

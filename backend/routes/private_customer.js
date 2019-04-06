@@ -58,4 +58,16 @@ app.delete('/:cust_id', (req,res)=>{
         res.status(404).json({error: err.toString('utf-8')})
     })
 })
+
+
+//--- GET ALL THE CUSTOMERS 
+app.get('/', (req,res)=>{
+    customerService.getAll().then((newCust)=>{
+        res.json({msg: 'Here are the list of all customets', newCust})
+    })
+    .catch(err=>{
+        res.status(404).json({error: err.toString('utf-8')})
+    })
+})
+
 module.exports = {PrivateCustomerRoutes: app, } 
